@@ -89,6 +89,14 @@
     #c12:hover { background: rgb(34,139,87); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
     #c12:hover span { color: #fff; }
     #c12:hover p { color: #e0f5ea; }
+    #c13:hover { background: rgb(74,144,226); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
+    #c13:hover p { color: #eaf2fd; }
+    #c14:hover { background: rgb(231,84,128); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
+    #c14:hover p { color: #fdeaf1; }
+    #c15:hover { background: rgb(230,126,34); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
+    #c15:hover p { color: #fdeee0; }
+    #c16:hover { background: rgb(52,73,94); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
+    #c16:hover p { color: #e5e9ec; }
     footer { background: #1e3c72; color: white; text-align: center; padding: 20px; margin-top: 40px; transition: background 0.4s; }
     body.dark-mode footer { background: #141e30; }
     a { color: #ffffff; text-decoration: none; }
@@ -164,6 +172,11 @@
     section ul span { color: #1e3c72; }
 
     /* Card projet cliquable */
+    .projects a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
     .projects a .card {
       cursor: pointer;
       position: relative;
@@ -238,11 +251,13 @@
 <section>
 <h2>Projets</h2>
 <div class="projects">
+<a href="https://conge-online.infinityfreeapp.com" target="_blank" rel="noopener">
 <div class="card" id="c6">
 <h3>🌐 Applications WEB</h3>
 <p>Projet HTML5/CSS3, PHP, MySQL, FPDF. Application web intuitive visant à faciliter les demandes et justifications de congés et absences en entreprise.</p>
 <p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 conge-online.infinityfreeapp.com</p>
 </div>
+</a>
 <div class="card" id="c11">
 <h3>🧭 Site web (<span>VOYAGES-HUB</span>)</h3>
 <p>Projet HTML5/CSS3 de vente de tickets de car de voyages en ligne. <br /><br /><br /><br />pas encore deployé</p>
@@ -255,11 +270,35 @@
 <h3>📝 Blog dynamique</h3>
 <p>Projet PHP/MySQL permettant la publication d'articles en ligne.</p>
 </div>
+<div class="card" id="c15">
+<h3>🥤 Gestion de distributeur de soda</h3>
+<p>Application console en Java simulant la gestion d'un distributeur automatique de boissons (stock, paiement, rendu de monnaie).</p>
+</div>
+<div class="card" id="c16">
+<h3>🏦 Simulation de système bancaire</h3>
+<p>Application console en Java simulant un système bancaire : gestion de comptes, dépôts, retraits et transactions.</p>
+</div>
+<a href="https://joyeusefetedespere.infinityfree.me/" target="_blank" rel="noopener">
+<div class="card" id="c13">
+<h3>👨‍👧 Joyeuse Fête des Pères</h3>
+<p>Site web HTML5/CSS3 célébrant la fête des pères, avec une mise en page festive et responsive.</p>
+<p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 joyeusefetedespere.infinityfree.me</p>
+</div>
+</a>
+<a href="https://happy-mothers-day.infinityfreeapp.com" target="_blank" rel="noopener">
+<div class="card" id="c14">
+<h3>👩‍👧 Happy Mother's Day</h3>
+<p>Site web HTML5/CSS3 dédié à la fête des mères, conçu avec une interface soignée et responsive.</p>
+<p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 happy-mothers-day.infinityfreeapp.com</p>
+</div>
+</a>
+<a href="https://eagle-leadership-academie.page.gd" target="_blank" rel="noopener">
 <div class="card" id="c12">
 <h3>🏫 Gestion des inscriptions scolaires</h3>
 <p>Application web de gestion des inscriptions pour <span>Eagle Leadership Académie</span>. Interface permettant la saisie, le suivi et la validation des dossiers d'élèves.</p>
 <p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 eagle-leadership-academie.page.gd</p>
 </div>
+</a>
 </div>
 </section>
 <section>
