@@ -1128,7 +1128,7 @@ function closeAdmin(){
 const ADMIN_TABS = [
   { key:'profile',    label:'Profil',              icon:'fa-id-card',         type:'profile' },
   { key:'about',      label:'À propos',            icon:'fa-circle-info',     type:'longtext' },
-  { key:'education',  label:'Formation',           icon:'fa-graduation-cap',  type:'list',
+  { key:'education',  label:'Formation',           icon:'fa-graduation-cap',  type:'list', addToTop:true,
     fields:[ {name:'period',label:'Période',type:'text'}, {name:'title',label:'Diplôme',type:'text'}, {name:'school',label:'Établissement',type:'text'} ],
     empty:{period:'', title:'', school:''} },
   { key:'skills',     label:'Compétences',         icon:'fa-screwdriver-wrench', type:'list',
@@ -1334,7 +1334,11 @@ function adminAddButton(listKey){
 function adminAddItem(listKey){
   const tab = ADMIN_TABS.find(t => t.key === listKey);
   adminDraft[listKey] = adminDraft[listKey] || [];
-  adminDraft[listKey].push(deepClone(tab.empty));
+  if (tab.addToTop){
+    adminDraft[listKey].unshift(deepClone(tab.empty));
+  } else {
+    adminDraft[listKey].push(deepClone(tab.empty));
+  }
   renderAdminTabBody(tab);
 }
 function adminRemoveItem(listKey, idx){
