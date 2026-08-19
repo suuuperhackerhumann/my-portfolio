@@ -1134,7 +1134,7 @@ const ADMIN_TABS = [
   { key:'skills',     label:'Compétences',         icon:'fa-screwdriver-wrench', type:'list',
     fields:[ {name:'icon',label:'Icône (Font Awesome)',type:'icon'}, {name:'text',label:'Texte',type:'text'} ],
     empty:{icon:'fa-star', text:''} },
-  { key:'experience', label:'Expériences',         icon:'fa-briefcase',       type:'list',
+  { key:'experience', label:'Expériences',         icon:'fa-briefcase',       type:'list', addToTop:true,
     fields:[ {name:'period',label:'Période',type:'text'}, {name:'role',label:'Poste',type:'text'}, {name:'detail',label:'Détail',type:'textarea'} ],
     empty:{period:'', role:'', detail:''} },
   { key:'projects',   label:'Projets',             icon:'fa-diagram-project', type:'list',
@@ -1376,14 +1376,10 @@ function adminResetTab(){
   showMessage('Section réinitialisée (pensez à Enregistrer).', 'info');
 }
 
-/* ══════════════════════════════════════════════════════════════
-   INITIALISATION
-   ══════════════════════════════════════════════════════════════ */
+
 document.addEventListener('DOMContentLoaded', async () => {
   await loadDefaultData();
   renderPublicSite(getData());
-  // Le mode sombre et la connexion admin ne sont plus mémorisés
-  // (aucun stockage local) : chaque visite démarre en mode clair et déconnecté.
 });
 </script>
 </body>
