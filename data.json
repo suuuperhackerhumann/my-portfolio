@@ -1,0 +1,267 @@
+{
+    "profile": {
+        "name": "Zanga Cheick Omar DIOURTE",
+        "subtitle": "TECHNICIEN SUPÉRIEUR INFORMATIQUE - DÉVELOPPEUR D'APPLICATION",
+        "nationalityBadge": "🇨🇮 Ivoirien",
+        "ageBadge": "19 ans",
+        "location": "Bingerville, Abidjan – Côte d'Ivoire",
+        "phone": "+225 05 84 87 64 67",
+        "email": "diourtecheick@gmail.com",
+        "linkedin": "https://www.linkedin.com/in/zanga-cheick-omar-diourte-81a458221",
+        "photo": "3.png"
+    },
+    "about": "Je suis passionné par le développement et les technologies numériques. Rigoureux, créatif et toujours motivé, je cherche à contribuer à des projets innovants tout en renforçant mes compétences techniques.",
+    "education": [
+        {
+            "period": "Juillet 2026",
+            "title": "CERTIFICATION AI FOR ALL",
+            "school": "Microsoft Learn / MTN Skills Academy"
+        },
+        {
+            "period": "Juillet 2026",
+            "title": "CERTIFICATION INTERNET FUNDAMENTALS",
+            "school": "GSMA / MTN Skills Academy"
+        },
+        {
+            "period": "2025 - 2026",
+            "title": "LICENCE 3 INFORMATIQUE GÉNIE LOGICIEL",
+            "school": "Atlantique International Business School (AIBS), Cocody Danga"
+        },
+        {
+            "period": "2024 – 2025",
+            "title": "BTS Informatique Développeur d'Applications",
+            "school": "Institut International Polytechnique des Elites d'Abidjan (IIPEA), Cocody Riviera-2"
+        },
+        {
+            "period": "2022 – 2023",
+            "title": "Baccalauréat série D",
+            "school": "Lycée Garçons de Bingerville"
+        },
+        {
+            "period": "2020 – 2022",
+            "title": "Certificate \"English Access Microscholarship\"",
+            "school": "Ambassade des États-Unis (en CI)"
+        },
+        {
+            "period": "2019 – 2020",
+            "title": "BEPC",
+            "school": "Lycée Garçons de Bingerville"
+        },
+        {
+            "period": "AOUT 2026 ",
+            "title": "CERTIFICAT IA GENERATIVE",
+            "school": "MICROSOFT LEARN ET MTN SKILLS ACADEMIE"
+        }
+    ],
+    "skills": [
+        {
+            "icon": "fa-laptop-code",
+            "text": "Développement web : HTML, CSS, JavaScript, PHP"
+        },
+        {
+            "icon": "fa-gears",
+            "text": "Programmation : Python, Java, Algorithmique"
+        },
+        {
+            "icon": "fa-database",
+            "text": "Bases de données : MySQL"
+        },
+        {
+            "icon": "fa-desktop",
+            "text": "Bureautique : Word, Excel, PowerPoint, Internet"
+        },
+        {
+            "icon": "fa-satellite-dish",
+            "text": "Réseau informatique"
+        },
+        {
+            "icon": "fa-puzzle-piece",
+            "text": "Systèmes d'exploitation"
+        },
+        {
+            "icon": "fa-globe",
+            "text": "Création de sites web dynamiques et responsives"
+        },
+        {
+            "icon": "fa-robot",
+            "text": "Maitrise de l'ia générative et de l'ia en général"
+        },
+        {
+            "icon": "fa-star",
+            "text": "Creation d'affiches de logo et de mockups"
+        }
+    ],
+    "experience": [
+        {
+            "period": "Nov. 2025 – Fév. 2026",
+            "role": "Stage de soutenance – NOVASYS CI",
+            "detail": "Thème : Développement d'un système d'automatisation de gestion des congés et absences."
+        },
+        {
+            "period": "Août 2024 – Sept. 2024",
+            "role": "Stage d'immersion professionnelle – NOVASYS CI",
+            "detail": "Projet : VOYAGES HUB – Création d'un site web pour l'achat en ligne des tickets de car voyageurs."
+        },
+        {
+            "period": "Poste antérieur",
+            "role": "Assistant gérant – Cyber café",
+            "detail": "Gestion technique des postes et support client."
+        }
+    ],
+    "projects": [
+        {
+            "icon": "fa-globe",
+            "title": "Applications WEB",
+            "desc": "Projet HTML5/CSS3, PHP, MySQL, FPDF. Application web intuitive visant à faciliter les demandes et justifications de congés et absences en entreprise.",
+            "link": "https://conge-online.infinityfreeapp.com",
+            "linkLabel": "conge-online.infinityfreeapp.com"
+        },
+        {
+            "icon": "fa-compass",
+            "title": "Site web (VOYAGES-HUB)",
+            "desc": "Projet HTML5/CSS3 de vente de tickets de car de voyages en ligne.",
+            "link": "https://voyages-hub.ifree.page/",
+            "linkLabel": "voyages-hub.ifree.page"
+        },
+        {
+            "icon": "fa-chart-column",
+            "title": "Application de gestion",
+            "desc": "Développement d'une mini-application en Python avec gestion de fichiers.",
+            "link": "",
+            "linkLabel": ""
+        },
+        {
+            "icon": "fa-pen-to-square",
+            "title": "Blog dynamique",
+            "desc": "Projet PHP/MySQL permettant la publication d'articles en ligne.",
+            "link": "",
+            "linkLabel": ""
+        },
+        {
+            "icon": "fa-glass-water",
+            "title": "Gestion de distributeur de soda",
+            "desc": "Application console en Java simulant la gestion d'un distributeur automatique de boissons (stock, paiement, rendu de monnaie).",
+            "link": "",
+            "linkLabel": ""
+        },
+        {
+            "icon": "fa-building-columns",
+            "title": "Simulation de système bancaire",
+            "desc": "Application console en Java simulant un système bancaire : gestion de comptes, dépôts, retraits et transactions.",
+            "link": "",
+            "linkLabel": ""
+        },
+        {
+            "icon": "fa-book",
+            "title": "Ma Bibliothèque",
+            "desc": "Plateforme web recensant la plupart de mes écrits : réflexions, textes personnels et créations.",
+            "link": "https://ma-bibliotheque.freepage.cc/?i=1#/",
+            "linkLabel": "ma-bibliotheque.freepage.cc"
+        },
+        {
+            "icon": "fa-heart",
+            "title": "Joyeuse Fête des Pères",
+            "desc": "Site web HTML5/CSS3 célébrant la fête des pères, avec une mise en page festive et responsive.",
+            "link": "https://joyeusefetedespere.infinityfree.me/",
+            "linkLabel": "joyeusefetedespere.infinityfree.me"
+        },
+        {
+            "icon": "fa-heart",
+            "title": "Happy Mother's Day",
+            "desc": "Site web HTML5/CSS3 dédié à la fête des mères, conçu avec une interface soignée et responsive.",
+            "link": "https://happy-mothers-day.infinityfreeapp.com",
+            "linkLabel": "happy-mothers-day.infinityfreeapp.com"
+        },
+        {
+            "icon": "fa-school",
+            "title": "Gestion des inscriptions scolaires",
+            "desc": "Application web de gestion des inscriptions pour Eagle Leadership Académie. Interface permettant la saisie, le suivi et la validation des dossiers d'élèves.",
+            "link": "https://eagle-leadership-academie.page.gd",
+            "linkLabel": "eagle-leadership-academie.page.gd"
+        },
+        {
+            "icon": "fa-location-dot",
+            "title": "Eyes On You",
+            "desc": "Site web de localisation et de rencontre basé sur la position géographique et la proximité, avec un système de chat intégré.",
+            "link": "https://eyes-on-you.freedev.app/connexion.php",
+            "linkLabel": "eyes-on-you.freedev.app"
+        }
+    ],
+    "languages": [
+        {
+            "flagName": "🇫🇷 Français",
+            "level": 5
+        },
+        {
+            "flagName": "🇬🇧 Anglais",
+            "level": 4
+        },
+        {
+            "flagName": "🇩🇪 Allemand",
+            "level": 3
+        }
+    ],
+    "atouts": [
+        {
+            "icon": "fa-bolt",
+            "text": "Dynamique"
+        },
+        {
+            "icon": "fa-palette",
+            "text": "Créatif"
+        },
+        {
+            "icon": "fa-clock",
+            "text": "Ponctuel"
+        },
+        {
+            "icon": "fa-ruler-combined",
+            "text": "Rigoureux"
+        },
+        {
+            "icon": "fa-handshake",
+            "text": "Serviable"
+        },
+        {
+            "icon": "fa-car",
+            "text": "Permis de conduire AB (en cours)"
+        }
+    ],
+    "engagement": [
+        {
+            "icon": "fa-star",
+            "text": "Membre fondateur de l'ONG LEADER'S HEART"
+        },
+        {
+            "icon": "fa-bullhorn",
+            "text": "Responsable communication de l'ONG LEADER'S HEART"
+        },
+        {
+            "icon": "fa-microphone",
+            "text": "Président du club de débat contradictoire au Lycée Garçons, Bingerville"
+        }
+    ],
+    "interests": [
+        {
+            "icon": "fa-book",
+            "text": "Développement personnel & lecture"
+        },
+        {
+            "icon": "fa-pen",
+            "text": "Écriture"
+        },
+        {
+            "icon": "fa-futbol",
+            "text": "Sport"
+        },
+        {
+            "icon": "fa-hand-holding-heart",
+            "text": "Bénévolat et actions communautaires"
+        },
+        {
+            "icon": " fa-person-praying",
+            "text": "Méditation"
+        }
+    ],
+    "footer": "© 2025 - Portfolio de Zanga Cheick Omar DIOURTE"
+}
