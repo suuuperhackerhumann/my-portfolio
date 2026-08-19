@@ -278,52 +278,52 @@
   </div>
 </header>
 
-<section>
+<section id="section-about">
   <h2><i class="fa-solid fa-circle-info"></i> À propos de moi</h2>
   <p id="pf-about"></p>
 </section>
 
-<section>
+<section id="section-education">
   <h2><i class="fa-solid fa-graduation-cap"></i> Diplômes &amp; Certifications</h2>
   <ul id="pf-education"></ul>
 </section>
 
-<section>
+<section id="section-skills">
   <h2><i class="fa-solid fa-screwdriver-wrench"></i> Domaines de Compétences</h2>
   <div class="skills" id="pf-skills"></div>
 </section>
 
-<section>
+<section id="section-experience">
   <h2><i class="fa-solid fa-briefcase"></i> Expériences Professionnelles</h2>
   <ul id="pf-experience"></ul>
 </section>
 
-<section>
+<section id="section-projects">
   <h2><i class="fa-solid fa-diagram-project"></i> Projets</h2>
   <div class="projects" id="pf-projects"></div>
 </section>
 
-<section>
+<section id="section-languages">
   <h2><i class="fa-solid fa-language"></i> Langues</h2>
   <div class="projects" id="pf-languages"></div>
 </section>
 
-<section>
+<section id="section-atouts">
   <h2><i class="fa-solid fa-star"></i> Autres Atouts</h2>
   <ul id="pf-atouts"></ul>
 </section>
 
-<section>
+<section id="section-engagement">
   <h2><i class="fa-solid fa-people-group"></i> Engagement &amp; Leadership</h2>
   <ul id="pf-engagement"></ul>
 </section>
 
-<section>
+<section id="section-interests">
   <h2><i class="fa-solid fa-heart"></i> Centres d'Intérêt</h2>
   <p id="pf-interests"></p>
 </section>
 
-<section>
+<section id="section-contact">
   <h2><i class="fa-solid fa-comment-dots"></i> Contact</h2>
   <form class="contact-form" id="contactForm" onsubmit="sendEmail(event)">
     <input type="text" id="name" placeholder="Votre nom" required />
@@ -332,6 +332,7 @@
     <button type="submit"><i class="fa-solid fa-paper-plane"></i> Envoyer</button>
   </form>
 </section>
+
 
 <footer><p id="pf-footer"></p></footer>
 
@@ -476,9 +477,18 @@ const FALLBACK_DEFAULT_DATA = {
   textColors: {
     name: "",
     subtitle: "",
-    headings: "",
-    body: "",
-    footer: ""
+    footer: "",
+    sections: {
+      about: { heading: "", text: "" },
+      education: { heading: "", text: "" },
+      skills: { heading: "" },
+      experience: { heading: "", text: "" },
+      projects: { heading: "" },
+      languages: { heading: "" },
+      atouts: { heading: "", text: "" },
+      engagement: { heading: "", text: "" },
+      interests: { heading: "", text: "" }
+    }
   }
 };
 
@@ -498,6 +508,22 @@ const TEXT_COLOR_PALETTE = [
   { name: "Cyan (info)",  value: "#17a2b8" }, // --info
   { name: "Blanc",        value: "#ffffff" },
   { name: "Noir",         value: "#333333" }
+];
+
+// Rubriques dont on peut personnaliser la couleur du titre (et du texte
+// quand hasText est vrai). Les rubriques dont le contenu est affiché dans
+// des cartes (Compétences, Projets, Langues) ne proposent que le titre :
+// les cartes et badges gardent leurs couleurs dynamiques d'origine.
+const SECTION_COLOR_META = [
+  { key:'about',       label:'À propos',             icon:'fa-circle-info',        hasText:true },
+  { key:'education',   label:'Formation',            icon:'fa-graduation-cap',     hasText:true },
+  { key:'skills',      label:'Compétences',          icon:'fa-screwdriver-wrench', hasText:false },
+  { key:'experience',  label:'Expériences',          icon:'fa-briefcase',          hasText:true },
+  { key:'projects',    label:'Projets',              icon:'fa-diagram-project',    hasText:false },
+  { key:'languages',   label:'Langues',               icon:'fa-language',          hasText:false },
+  { key:'atouts',      label:'Atouts',                icon:'fa-star',              hasText:true },
+  { key:'engagement',  label:'Engagement',            icon:'fa-people-group',      hasText:true },
+  { key:'interests',   label:"Centres d'intérêt",    icon:'fa-heart',              hasText:true }
 ];
 
 // Données par défaut réellement utilisées (remplies par loadDefaultData()).
@@ -730,15 +756,33 @@ function renderPublicSite(data){
 }
 
 function applyTextColors(tc){
-  const set = (el, color) => { if (el) el.style.color = color || ''; };
+  tc = tc || {};
+  const sections = tc.sections || {};
+  let css = '';
+  if (tc.name)     css += `#pf-name{ color:${tc.name} !important; }\n`;
+  if (tc.subtitle) css += `#pf-subtitle{ color:${tc.subtitle} !important; }\n`;
+  if (tc.footer)   css += `#pf-footer{ color:${tc.footer} !important; }\n`;
 
-  set(document.getElementById('pf-name'), tc.name);
-  set(document.getElementById('pf-subtitle'), tc.subtitle);
-  document.querySelectorAll('section > h2').forEach(h => set(h, tc.headings));
-  set(document.getElementById('pf-about'), tc.body);
-  set(document.getElementById('pf-footer'), tc.footer);
-  ['pf-education','pf-experience','pf-atouts','pf-engagement'].forEach(id => set(document.getElementById(id), tc.body));
-  set(document.getElementById('pf-interests'), tc.body);
+  SECTION_COLOR_META.forEach(meta => {
+    const val = sections[meta.key] || {};
+    if (val.heading){
+      css += `#section-${meta.key} > h2:not(:hover){ color:${val.heading} !important; }\n`;
+    }
+    if (meta.hasText && val.text){
+      // Cible le conteneur de texte de la rubrique et tous ses descendants
+      // (ex: le "détail" en <span> dans les expériences) sans toucher aux
+      // cartes ou badges d'autres rubriques.
+      css += `#pf-${meta.key}, #pf-${meta.key} *{ color:${val.text} !important; }\n`;
+    }
+  });
+
+  let styleTag = document.getElementById('dynamicTextColors');
+  if (!styleTag){
+    styleTag = document.createElement('style');
+    styleTag.id = 'dynamicTextColors';
+    document.head.appendChild(styleTag);
+  }
+  styleTag.textContent = css;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -1109,14 +1153,7 @@ const ADMIN_TABS = [
     fields:[ {name:'icon',label:'Icône (Font Awesome)',type:'icon'}, {name:'text',label:'Texte',type:'text'} ],
     empty:{icon:'fa-heart', text:''} },
   { key:'footer',     label:'Pied de page',        icon:'fa-shoe-prints',     type:'shorttext' },
-  { key:'textColors', label:'Couleurs des textes', icon:'fa-palette',         type:'colors',
-    fields:[
-      { name:'name',     label:'Nom (titre principal)' },
-      { name:'subtitle', label:'Sous-titre / Poste' },
-      { name:'headings', label:'Titres de section' },
-      { name:'body',     label:'Texte des paragraphes et listes' },
-      { name:'footer',   label:'Pied de page' }
-    ] }
+  { key:'textColors', label:'Couleurs des textes', icon:'fa-palette',         type:'colors' }
 ];
 
 let adminDraft = null;
@@ -1176,7 +1213,29 @@ function renderAdminTabBody(tab){
   }
   if (tab.type === 'colors'){
     if (!adminDraft.textColors) adminDraft.textColors = {};
-    body.innerHTML = tab.fields.map(f => adminColorField(f.name, f.label, adminDraft.textColors[f.name])).join('');
+    const tc = adminDraft.textColors;
+    if (!tc.sections) tc.sections = {};
+    let html = `<div class="admin-item-card">
+        <div class="admin-item-head"><span class="admin-item-tag"><i class="fa-solid fa-id-card"></i> En-tête</span></div>
+        ${adminColorField('name', 'Nom (titre principal)', tc.name)}
+        ${adminColorField('subtitle', 'Sous-titre / Poste', tc.subtitle)}
+      </div>`;
+    html += SECTION_COLOR_META.map(meta => {
+      const sec = tc.sections[meta.key] || {};
+      const textField = meta.hasText
+        ? adminColorField('sections.'+meta.key+'.text', 'Texte de la rubrique', sec.text)
+        : `<div class="admin-hint"><i class="fa-solid fa-circle-info"></i> Le contenu de cette rubrique s'affiche dans des cartes à couleurs dynamiques — non personnalisable ici.</div>`;
+      return `<div class="admin-item-card">
+          <div class="admin-item-head"><span class="admin-item-tag"><i class="fa-solid ${meta.icon}"></i> ${esc(meta.label)}</span></div>
+          ${adminColorField('sections.'+meta.key+'.heading', 'Titre de la rubrique', sec.heading)}
+          ${textField}
+        </div>`;
+    }).join('');
+    html += `<div class="admin-item-card">
+        <div class="admin-item-head"><span class="admin-item-tag"><i class="fa-solid fa-shoe-prints"></i> Pied de page</span></div>
+        ${adminColorField('footer', 'Texte du pied de page', tc.footer)}
+      </div>`;
+    body.innerHTML = html;
     return;
   }
   if (tab.type === 'list'){
@@ -1205,16 +1264,16 @@ function adminSimpleField(objKey, name, label, value){
     </div>`;
 }
 
-function adminColorField(fieldKey, label, currentValue){
+function adminColorField(path, label, currentValue){
   const swatches = TEXT_COLOR_PALETTE.map(c => `
     <button type="button" class="color-swatch ${currentValue === c.value ? 'active' : ''}"
-      title="${esc(c.name)}" onclick="adminSetTextColor('${fieldKey}', '${c.value}')">
+      title="${esc(c.name)}" onclick="adminSetTextColor('${path}', '${c.value}')">
       <span class="swatch-dot" style="background:${c.value};"></span>
       <span class="swatch-label">${esc(c.name)}</span>
     </button>`).join('');
   const noneSwatch = `
     <button type="button" class="color-swatch none ${!currentValue ? 'active' : ''}"
-      title="Couleur par défaut du site" onclick="adminSetTextColor('${fieldKey}', '')">
+      title="Couleur par défaut du site" onclick="adminSetTextColor('${path}', '')">
       <span class="swatch-dot"></span>
       <span class="swatch-label">Par défaut</span>
     </button>`;
@@ -1224,9 +1283,15 @@ function adminColorField(fieldKey, label, currentValue){
     </div>`;
 }
 
-function adminSetTextColor(fieldKey, value){
+function adminSetTextColor(path, value){
   if (!adminDraft.textColors) adminDraft.textColors = {};
-  adminDraft.textColors[fieldKey] = value;
+  const parts = path.split('.');
+  let obj = adminDraft.textColors;
+  for (let i = 0; i < parts.length - 1; i++){
+    if (!obj[parts[i]]) obj[parts[i]] = {};
+    obj = obj[parts[i]];
+  }
+  obj[parts[parts.length - 1]] = value;
   renderAdminTabBody(ADMIN_TABS.find(t => t.key === 'textColors'));
   renderPublicSite(adminDraft); // aperçu immédiat sur le site
 }
