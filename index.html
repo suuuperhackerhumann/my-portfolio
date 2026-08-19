@@ -1,395 +1,639 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Zanga Cheick Omar DIOURTE</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
-      transition: background-color 0.4s, color 0.4s;
-    }
-    body.dark-mode {
-      background-color: #1b1f2a;
-      color: #dce3f0;
-    }
-    header {
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: white;
-      padding: 40px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      transition: background 0.4s;
-    }
-    body.dark-mode header {
-      background: linear-gradient(135deg, #243b55, #141e30);
-    }
-    header img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid white;
-      box-shadow: 0 0 20px rgba(255,255,255,0.8);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    header img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(255,255,255,1);
-    }
-    .header-text { max-width: 600px; }
-    .header-text h1 { margin: 0; font-size: 2.5em; }
-    .header-text p { margin: 10px 0 0; font-size: 1.2em; }
-    .header-subtitle { font-size: 1.1em; font-weight: bold; margin-top: 5px; color: #ffffffb0; }
-    section { padding: 40px 20px; max-width: 1000px; margin: auto; }
-    h2 {
-      color: #1e3c72;
-      margin-bottom: 20px;
-      border-left: 5px solid #2a5298;
-      padding-left: 10px;
-      transition: all 0.4s;
-    }
-    body.dark-mode h2 { color: #9bb6d4; border-left-color: #5a7fa3; }
-    h2:hover {
-      background-color: #1e3c72;
-      color: #f4f4f4;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      border: 2px solid black;
-    }
-    .skills, .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: all 0.4s ease;
-    }
-    body.dark-mode .card { background: #2a3140; color: #dce3f0; }
-    #c1:hover  { background: violet; color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c2:hover  { background: yellow; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c3:hover  { background: rgb(176,67,67); color: #f4f4f4; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c4:hover  { background: rgb(86,86,202); color: #f4f4f4; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c5:hover  { background: pink; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c6:hover  { background: rgb(116,191,238); transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c7:hover  { background: rgb(115,230,178); transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c8:hover  { background: rgb(249,196,123); transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c9:hover  { background: rgb(13,47,68); color: #f4f4f4; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c10:hover { background: rgb(66,14,50); color: #f4f4f4; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c11:hover { background: rgb(185,231,249); color: #000; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c12:hover { background: rgb(34,139,87); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c12:hover span { color: #fff; }
-    #c12:hover p { color: #e0f5ea; }
-    #c13:hover { background: rgb(74,144,226); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c13:hover p { color: #eaf2fd; }
-    #c14:hover { background: rgb(231,84,128); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c14:hover p { color: #fdeaf1; }
-    #c15:hover { background: rgb(230,126,34); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c15:hover p { color: #fdeee0; }
-    #c16:hover { background: rgb(52,73,94); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c16:hover p { color: #e5e9ec; }
-    #c17:hover { background: rgb(155,89,182); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c17:hover p { color: #f4eaf8; }
-    #c18:hover { background: rgb(214,64,90); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c18:hover p { color: #fde9ec; }
-    footer { background: #1e3c72; color: white; text-align: center; padding: 20px; margin-top: 40px; transition: background 0.4s; }
-    body.dark-mode footer { background: #141e30; }
-    a { color: #ffffff; text-decoration: none; }
-    form { display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: 20px auto; }
-    input, textarea, button { padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em; transition: all 0.3s; }
-    input:focus, textarea:focus { border-color: #2a5298; outline: none; }
-    button { background: #1e3c72; color: white; cursor: pointer; border: none; }
-    body.dark-mode button { background: #ccc; }
-    button:hover { background: #2a5298; }
-    .toggle-btn {
-      position: fixed; top: 20px; right: 20px;
-      background: #1e3c72; color: white; border: none;
-      border-radius: 20px; padding: 10px 20px; cursor: pointer; transition: background 0.3s;
-      z-index: 1000;
-    }
-    .toggle-btn:hover { background: #2a5298; }
-    .pdf-btn {
-      position: fixed; top: 20px; left: 20px;
-      background: #28a745; color: white; border: none;
-      border-radius: 20px; padding: 10px 20px; cursor: pointer; transition: background 0.3s;
-      z-index: 1000; font-size: 0.9em;
-    }
-    .pdf-btn:hover { background: #218838; }
-    .mess-btn {
-      position: fixed; top: 70px; left: 20px;
-      background: #007bff; color: white; border: none;
-      border-radius: 20px; padding: 10px 20px; cursor: pointer; transition: background 0.3s;
-      z-index: 1000; font-size: 0.9em;
-    }
-    .mess-btn:hover { background: #0069d9; }
-    .status-message {
-      position: fixed; top: 80px; right: 20px;
-      padding: 15px 20px; border-radius: 10px; color: white;
-      font-weight: bold; z-index: 1001; opacity: 0;
-      transition: opacity 0.3s, transform 0.3s;
-      transform: translateY(-20px);
-    }
-    .status-message.show { opacity: 1; transform: translateY(0); }
-    .status-message.success { background: #28a745; }
-    .status-message.error   { background: #dc3545; }
-    .status-message.info    { background: #17a2b8; }
-    @media (max-width: 768px) {
-      header { flex-direction: column; text-align: center; gap: 15px; padding: 30px 10px; }
-      header img { width: 120px; height: 120px; }
-      .header-text h1 { font-size: 2em; }
-      .header-text p  { font-size: 1em; }
-      section { padding: 30px 15px; }
-      .skills, .projects { grid-template-columns: 1fr; }
-      .pdf-btn, .toggle-btn, .mess-btn { position: static; margin: 10px; display: inline-block; }
-    }
-    @media (max-width: 480px) {
-      header img { width: 100px; height: 100px; }
-      .header-text h1 { font-size: 1.5em; }
-      .header-text p  { font-size: 0.9em; }
-      button.toggle-btn, .pdf-btn, .mess-btn { padding: 8px 15px; font-size: 0.9em; }
-      form { width: 90%; margin: 15px auto; }
-      input, textarea, button { font-size: 0.9em; padding: 8px; }
-      h2 { font-size: 1.3em; }
-      .card { padding: 15px; }
-      footer { font-size: 0.9em; padding: 15px; }
-    }
-    #l1:hover { background: rgb(116,191,238); color:#fff; transform:translateY(-5px); box-shadow:0 8px 15px rgba(0,0,0,0.2); }
-    #l2:hover { background: rgb(115,230,178); color:#fff; transform:translateY(-5px); box-shadow:0 8px 15px rgba(0,0,0,0.2); }
-    #l3:hover { background: rgb(249,196,123); color:#fff; transform:translateY(-5px); box-shadow:0 8px 15px rgba(0,0,0,0.2); }
-    span { color: #ffffff; }
-    .info-badge {
-      display: inline-block; background: #437d9157;
-      padding: 5px 12px; border-radius: 15px; border: #ffffff solid 2px;
-      margin: 5px; font-size: 0.9em;
-    }
-    body.dark-mode .info-badge { background: #2a3f5f; }
-    .projects span { color: #1e3c72; }
-    section ul span { color: #1e3c72; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio - Zanga Cheick Omar DIOURTE</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  :root{
+    --navy:#1e3c72; --blue:#2a5298; --lgray:#eef2f8; --dgray:#6b7280; --success:#28a745; --danger:#dc3545; --info:#17a2b8;
+  }
+  *{box-sizing:border-box;}
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    transition: background-color 0.4s, color 0.4s;
+  }
+  body.dark-mode { background-color: #1b1f2a; color: #dce3f0; }
+  header {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white; padding: 40px 20px;
+    display: flex; align-items: center; justify-content: center; gap: 20px;
+    transition: background 0.4s;
+  }
+  body.dark-mode header { background: linear-gradient(135deg, #243b55, #141e30); }
+  header img {
+    width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
+    border: 4px solid white; box-shadow: 0 0 20px rgba(255,255,255,0.8);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  header img:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255,255,255,1); }
+  .header-text { max-width: 600px; }
+  .header-text h1 { margin: 0; font-size: 2.5em; }
+  .header-text p { margin: 10px 0 0; font-size: 1.2em; }
+  .header-subtitle { font-size: 1.1em; font-weight: bold; margin-top: 5px; color: #ffffffb0; }
+  section { padding: 40px 20px; max-width: 1000px; margin: auto; }
+  h2 {
+    color: #1e3c72; margin-bottom: 20px; border-left: 5px solid #2a5298; padding-left: 10px;
+    transition: all 0.4s; display:flex; align-items:center; gap:10px;
+  }
+  body.dark-mode h2 { color: #9bb6d4; border-left-color: #5a7fa3; }
+  h2:hover { background-color: #1e3c72; color: #f4f4f4; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border: 2px solid black; }
+  .skills, .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+  .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: all 0.4s ease; }
+  body.dark-mode .card { background: #2a3140; color: #dce3f0; }
+  .card i.field-icon{ margin-right:8px; }
 
-    /* Card projet cliquable */
-    .projects a {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-    .projects a .card {
-      cursor: pointer;
-      position: relative;
-    }
-    .projects a .card::after {
-      content: "↗";
-      position: absolute;
-      top: 12px;
-      right: 14px;
-      font-size: 1em;
-      color: #2a5298;
-      opacity: 0.5;
-      transition: opacity 0.3s;
-    }
-    .projects a .card:hover::after {
-      opacity: 1;
-      color: #fff;
-    }
-  </style>
+  .hover-card{ --hbg:#2a5298; --hfg:#fff; cursor:default; }
+  .hover-card:hover{ background: var(--hbg); transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
+  .hover-card:hover, .hover-card:hover h3, .hover-card:hover p, .hover-card:hover span, .hover-card:hover i { color: var(--hfg); }
 
-  <!-- jsPDF -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <!-- EmailJS -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>emailjs.init('IOBd0ZMe9qySPX_6X');</script>
+  footer { background: #1e3c72; color: white; text-align: center; padding: 20px; margin-top: 40px; transition: background 0.4s; }
+  body.dark-mode footer { background: #141e30; }
+  a { color: #ffffff; text-decoration: none; }
+  form.contact-form { display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: 20px auto; }
+  form.contact-form input, form.contact-form textarea, form.contact-form button { padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em; transition: all 0.3s; }
+  form.contact-form input:focus, form.contact-form textarea:focus { border-color: #2a5298; outline: none; }
+  form.contact-form button { background: #1e3c72; color: white; cursor: pointer; border: none; }
+  body.dark-mode form.contact-form button { background: #ccc; color:#1b1f2a; }
+  form.contact-form button:hover { background: #2a5298; }
+
+  .top-actions{ position:fixed; top:16px; left:16px; right:16px; z-index:1000; display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap; pointer-events:none; }
+  .top-actions .group{ display:flex; gap:8px; flex-wrap:wrap; pointer-events:auto; }
+  .icon-btn {
+    background: #1e3c72; color: white; border: none; border-radius: 20px; padding: 10px 16px; cursor: pointer;
+    transition: background 0.3s, transform .2s; font-size: 0.85em; display:inline-flex; align-items:center; gap:7px; box-shadow:0 2px 6px rgba(0,0,0,.15);
+  }
+  .icon-btn:hover{ transform: translateY(-2px); }
+  .icon-btn.pdf{ background:#28a745; } .icon-btn.pdf:hover{ background:#218838; }
+  .icon-btn.msg{ background:#007bff; } .icon-btn.msg:hover{ background:#0069d9; }
+  .icon-btn.dark{ background:#1e3c72; } .icon-btn.dark:hover{ background:#2a5298; }
+  .icon-btn.admin{ background:linear-gradient(135deg,#2a5298,#1e3c72); } .icon-btn.admin:hover{ filter:brightness(1.15); }
+
+  .status-message {
+    position: fixed; top: 70px; right: 20px; padding: 15px 20px; border-radius: 10px; color: white;
+    font-weight: bold; z-index: 3001; opacity: 0; transition: opacity 0.3s, transform 0.3s; transform: translateY(-20px);
+  }
+  .status-message.show { opacity: 1; transform: translateY(0); }
+  .status-message.success { background: #28a745; }
+  .status-message.error   { background: #dc3545; }
+  .status-message.info    { background: #17a2b8; }
+
+  @media (max-width: 768px) {
+    header { flex-direction: column; text-align: center; gap: 15px; padding: 30px 10px; }
+    header img { width: 120px; height: 120px; }
+    .header-text h1 { font-size: 2em; }
+    .header-text p  { font-size: 1em; }
+    section { padding: 30px 15px; }
+    .skills, .projects { grid-template-columns: 1fr; }
+    .top-actions{ position:static; padding:10px; }
+    .top-actions .group{ justify-content:center; width:100%; }
+  }
+  @media (max-width: 480px) {
+    header img { width: 100px; height: 100px; }
+    .header-text h1 { font-size: 1.5em; }
+    .header-text p  { font-size: 0.9em; }
+    .icon-btn { padding: 8px 12px; font-size: 0.8em; }
+    form.contact-form { width: 90%; margin: 15px auto; }
+    h2 { font-size: 1.3em; }
+    .card { padding: 15px; }
+    footer { font-size: 0.9em; padding: 15px; }
+  }
+
+  span { color: #ffffff; }
+  .info-badge { display: inline-block; background: #437d9157; padding: 5px 12px; border-radius: 15px; border: #ffffff solid 2px; margin: 5px; font-size: 0.9em; }
+  body.dark-mode .info-badge { background: #2a3f5f; }
+  .projects span { color: #1e3c72; }
+  section ul span { color: #1e3c72; }
+  section ul li{ margin-bottom:6px; }
+
+  .projects a { display: block; text-decoration: none; color: inherit; }
+  .projects a .card { cursor: pointer; position: relative; }
+  .projects a .card::after { content: "\f35d"; font-family:"Font Awesome 6 Free"; font-weight:900; position: absolute; top: 14px; right: 16px; font-size: 0.85em; color: #2a5298; opacity: 0.5; transition: opacity 0.3s; }
+  .projects a .card:hover::after { opacity: 1; color: #fff; }
+  .project-link{ margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold; }
+  .hover-card:hover .project-link{ color: inherit; }
+  .contact-icon-row{ display:flex; flex-wrap:wrap; gap:6px 4px; align-items:center; justify-content:center; }
+  .stars i{ margin-right:2px; }
+
+  /* ─── MODALS (login + messages) ─── */
+  .modal-overlay{ display:none; position: fixed; inset:0; background: rgba(10,15,30,0.72); padding: 20px; z-index: 4000; overflow: auto; align-items:center; justify-content:center; }
+  .modal-overlay.open{ display:flex; }
+  .modal-box{ background: white; padding: 28px; max-width: 440px; width:100%; margin: auto; border-radius: 14px; color: #333; box-shadow:0 20px 60px rgba(0,0,0,.4); }
+  body.dark-mode .modal-box{ background:#232a3b; color:#dce3f0; }
+  .modal-box h2{ margin-top:0; display:flex; align-items:center; gap:10px; border:none; padding:0; background:none !important; box-shadow:none !important; }
+  .login-icon{ width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg,#1e3c72,#2a5298); color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.5em; margin:0 auto 14px; }
+  .modal-box input[type=password]{ width:100%; padding:12px 14px; border:1px solid #ccc; border-radius:8px; font-size:1em; margin:12px 0 6px; }
+  .modal-box .err{ color:#dc3545; font-size:0.85em; min-height:18px; }
+  .modal-actions{ display:flex; gap:10px; margin-top:14px; }
+  .modal-actions button{ flex:1; padding:11px; border:none; border-radius:8px; cursor:pointer; font-size:0.95em; font-weight:bold; }
+  .btn-primary{ background:#1e3c72; color:#fff; } .btn-primary:hover{ background:#2a5298; }
+  .btn-ghost{ background:#eef2f8; color:#1e3c72; } .btn-ghost:hover{ background:#dfe7f3; }
+  body.dark-mode .btn-ghost{ background:#2a3140; color:#dce3f0; }
+
+  #messagesModal .modal-box{ max-width:600px; text-align:left; }
+  .msg-card{ border:1px solid #ddd; padding:12px; margin-bottom:12px; border-radius:8px; background:#f9f9f9; position:relative; }
+  body.dark-mode .msg-card{ background:#2a3140; border-color:#3a4257; }
+  .msg-date{ position:absolute; top:8px; right:10px; font-size:0.75em; color:#999; }
+
+  /* ─── ADMIN PANEL ─── */
+  .admin-panel{ display:none; position:fixed; inset:0; z-index:3500; background:#f4f6fb; }
+  .admin-panel.open{ display:flex; }
+  body.dark-mode .admin-panel{ background:#161b26; }
+  .admin-sidebar{
+    width:250px; flex-shrink:0; background:linear-gradient(180deg,#1e3c72,#16305e); color:#fff;
+    display:flex; flex-direction:column; padding:18px 0; overflow-y:auto;
+  }
+  .admin-brand{ padding:0 20px 16px; display:flex; align-items:center; gap:10px; font-weight:bold; font-size:1.05em; border-bottom:1px solid rgba(255,255,255,.15); margin-bottom:10px;}
+  .admin-nav-btn{
+    display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:none; border:none; color:#cfe0f7;
+    padding:12px 20px; font-size:0.92em; cursor:pointer; transition:background .2s,color .2s; border-left:3px solid transparent;
+  }
+  .admin-nav-btn i{ width:18px; text-align:center; }
+  .admin-nav-btn:hover{ background:rgba(255,255,255,.08); color:#fff; }
+  .admin-nav-btn.active{ background:rgba(255,255,255,.14); color:#fff; border-left-color:#7fb3ff; font-weight:bold; }
+  .admin-sidebar-footer{ margin-top:auto; padding:14px 16px 4px; border-top:1px solid rgba(255,255,255,.15); display:flex; flex-direction:column; gap:8px; }
+  .admin-sidebar-footer button{ display:flex; align-items:center; gap:8px; justify-content:center; padding:10px; border-radius:8px; border:none; cursor:pointer; font-size:0.85em; font-weight:bold; }
+  .admin-view-site{ background:#eef2f8; color:#1e3c72; } .admin-view-site:hover{ background:#dfe7f3; }
+  .admin-logout{ background:rgba(220,53,69,.85); color:#fff; } .admin-logout:hover{ background:#dc3545; }
+
+  .admin-content{ flex:1; display:flex; flex-direction:column; overflow:hidden; }
+  .admin-topbar{ background:#fff; padding:16px 26px; display:flex; align-items:center; justify-content:space-between; box-shadow:0 2px 6px rgba(0,0,0,.06); flex-wrap:wrap; gap:10px; }
+  body.dark-mode .admin-topbar{ background:#1f2634; }
+  .admin-topbar h2{ margin:0; border:none; padding:0; background:none !important; box-shadow:none !important; font-size:1.25em; color:#1e3c72; }
+  body.dark-mode .admin-topbar h2{ color:#9bb6d4; }
+  .admin-save-bar{ display:flex; gap:10px; }
+  .admin-save-bar button{ padding:10px 18px; border-radius:8px; border:none; cursor:pointer; font-weight:bold; display:flex; align-items:center; gap:8px; font-size:0.9em; }
+  .btn-save{ background:#28a745; color:#fff; } .btn-save:hover{ background:#218838; }
+  .btn-reset{ background:#fdece9; color:#c0392b; } .btn-reset:hover{ background:#f9d6d0; }
+
+  .admin-body{ flex:1; overflow-y:auto; padding:24px 26px 60px; }
+  .admin-field{ margin-bottom:16px; }
+  .admin-field label{ display:block; font-size:0.85em; font-weight:bold; color:#1e3c72; margin-bottom:6px; }
+  body.dark-mode .admin-field label{ color:#9bb6d4; }
+  .admin-field input[type=text], .admin-field input[type=number], .admin-field input[type=url], .admin-field textarea{
+    width:100%; padding:10px 12px; border:1px solid #d7dfec; border-radius:8px; font-size:0.95em; font-family:inherit; background:#fff; color:#333;
+  }
+  body.dark-mode .admin-field input, body.dark-mode .admin-field textarea{ background:#232a3b; color:#dce3f0; border-color:#3a4257; }
+  .admin-field textarea{ min-height:70px; resize:vertical; }
+  .admin-field .icon-input-row{ display:flex; align-items:center; gap:10px; }
+  .icon-preview{ width:40px; height:40px; border-radius:8px; background:#eef2f8; display:flex; align-items:center; justify-content:center; color:#1e3c72; flex-shrink:0; }
+  body.dark-mode .icon-preview{ background:#2a3140; color:#9bb6d4; }
+  .admin-hint{ font-size:0.78em; color:#8a93a6; margin-top:4px; }
+
+  .admin-grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:0 18px; }
+  @media (max-width:700px){ .admin-grid-2{ grid-template-columns:1fr; } }
+
+  .color-swatches{ display:flex; flex-wrap:wrap; gap:10px; }
+  .color-swatch{
+    display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer;
+    background:none; border:none; padding:0; font-family:inherit;
+  }
+  .color-swatch .swatch-dot{
+    width:34px; height:34px; border-radius:50%; border:3px solid transparent;
+    box-shadow:0 0 0 1px rgba(0,0,0,0.15); transition:transform .15s, border-color .15s;
+  }
+  .color-swatch:hover .swatch-dot{ transform:scale(1.1); }
+  .color-swatch.active .swatch-dot{ border-color:#1e3c72; box-shadow:0 0 0 1px #1e3c72; }
+  body.dark-mode .color-swatch.active .swatch-dot{ border-color:#9bb6d4; box-shadow:0 0 0 1px #9bb6d4; }
+  .color-swatch .swatch-label{ font-size:0.72em; color:#6b7280; text-align:center; max-width:64px; }
+  body.dark-mode .color-swatch .swatch-label{ color:#9bb6d4; }
+  .color-swatch.none .swatch-dot{
+    background:repeating-conic-gradient(#ccc 0% 25%, #fff 0% 50%) 50% / 10px 10px;
+  }
+
+  .admin-photo-row{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  .admin-photo-preview{ width:70px; height:70px; border-radius:50%; object-fit:cover; border:2px solid #d7dfec; }
+  .admin-upload-btn{ background:#eef2f8; color:#1e3c72; border:1px dashed #b9c8e0; padding:9px 14px; border-radius:8px; cursor:pointer; font-size:0.85em; display:inline-flex; align-items:center; gap:8px; }
+  body.dark-mode .admin-upload-btn{ background:#2a3140; color:#9bb6d4; border-color:#3a4257; }
+
+  .admin-item-card{ background:#fff; border:1px solid #e3e8f2; border-radius:12px; padding:16px 18px; margin-bottom:14px; position:relative; }
+  body.dark-mode .admin-item-card{ background:#1f2634; border-color:#2f394d; }
+  .admin-item-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+  .admin-item-tag{ font-size:0.75em; font-weight:bold; color:#8a93a6; letter-spacing:.03em; text-transform:uppercase; }
+  .admin-delete-btn{ background:#fdece9; color:#c0392b; border:none; width:30px; height:30px; border-radius:50%; cursor:pointer; flex-shrink:0; }
+  .admin-delete-btn:hover{ background:#f6c8c0; }
+  .admin-add-btn{ background:#eef2f8; color:#1e3c72; border:2px dashed #b9c8e0; border-radius:10px; padding:14px; width:100%; cursor:pointer; font-weight:bold; display:flex; align-items:center; justify-content:center; gap:8px; }
+  body.dark-mode .admin-add-btn{ background:#232a3b; color:#9bb6d4; border-color:#3a4257; }
+  .admin-add-btn:hover{ background:#dfe7f3; }
+  .admin-empty{ text-align:center; color:#8a93a6; padding:30px 10px; font-size:0.9em; }
+
+  .admin-mobile-topbar{ display:none; }
+  @media (max-width: 860px){
+    .admin-panel.open{ flex-direction:column; }
+    .admin-sidebar{ width:100%; flex-direction:row; flex-wrap:nowrap; overflow-x:auto; padding:10px 8px; align-items:center; }
+    .admin-brand{ display:none; }
+    .admin-nav-btn{ flex-direction:column; white-space:nowrap; padding:8px 14px; border-left:none; border-bottom:3px solid transparent; gap:5px; font-size:0.75em; }
+    .admin-nav-btn.active{ border-bottom-color:#7fb3ff; }
+    .admin-sidebar-footer{ flex-direction:row; margin-top:0; padding:8px; border-top:none; border-left:1px solid rgba(255,255,255,.15); }
+    .admin-sidebar-footer button span{ display:none; }
+    .admin-body{ padding:18px 16px 50px; }
+    .admin-topbar{ padding:12px 16px; }
+  }
+</style>
+
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('IOBd0ZMe9qySPX_6X');</script>
 </head>
 <body>
-<p><button class="pdf-btn" onclick="generatePDF()">📄 Télécharger CV PDF</button> <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Mode sombre</button> <button class="mess-btn" onclick="showStoredMessages()">📥 Voir les messages reçus</button></p>
+
+<div class="top-actions">
+  <div class="group">
+    <button class="icon-btn pdf" onclick="generatePDF()"><i class="fa-solid fa-file-pdf"></i> Télécharger CV PDF</button>
+    <button class="icon-btn msg" onclick="showStoredMessages()"><i class="fa-solid fa-inbox"></i> Messages reçus</button>
+  </div>
+  <div class="group">
+    <button class="icon-btn admin" onclick="openAdmin()"><i class="fa-solid fa-user-shield"></i> Admin</button>
+    <button class="icon-btn dark" id="darkToggleBtn" onclick="toggleDarkMode()"><i class="fa-solid fa-moon"></i> Mode sombre</button>
+  </div>
+</div>
+
 <div id="statusMessage" class="status-message"></div>
-<div id="portfolioContent"><header><img src="3.png" alt="Photo de profil" />
-<div class="header-text">
-<h1>Zanga Cheick Omar DIOURTE</h1>
-<div class="header-subtitle">TECHNICIEN SUPÉRIEUR INFORMATIQUE - DÉVELOPPEUR D'APPLICATION</div>
-<p><span class="info-badge">🇨🇮 Ivoirien</span> <span class="info-badge">19 ans</span></p>
-<p>📍 Bingerville, Abidjan – Côte d'Ivoire  |  📱 <a href="tel:+22505848764 67">+225 05 84 87 64 67</a>  |  ✉️ <a href="mailto:diourtecheick@gmail.com">diourtecheick@gmail.com</a>  |  <a href="https://www.linkedin.com/in/zanga-cheick-omar-diourte-81a458221" target="_blank" rel="noopener">LinkedIn</a></p>
-</div>
+
+<!-- ═════════ CONTENU DU PORTFOLIO (généré dynamiquement) ═════════ -->
+<div id="portfolioContent">
+
+<header>
+  <img id="pf-photo" src="3.png" alt="Photo de profil" />
+  <div class="header-text">
+    <h1 id="pf-name"></h1>
+    <div class="header-subtitle" id="pf-subtitle"></div>
+    <p><span class="info-badge" id="pf-badge-nat"></span> <span class="info-badge" id="pf-badge-age"></span></p>
+    <p class="contact-icon-row">
+      <span><i class="fa-solid fa-location-dot"></i> <span id="pf-location"></span></span>
+      <span>&nbsp;|&nbsp;</span>
+      <span><i class="fa-solid fa-mobile-screen"></i> <a id="pf-phone-link" href="#"><span id="pf-phone"></span></a></span>
+      <span>&nbsp;|&nbsp;</span>
+      <span><i class="fa-solid fa-envelope"></i> <a id="pf-email-link" href="#"><span id="pf-email"></span></a></span>
+      <span>&nbsp;|&nbsp;</span>
+      <span><i class="fa-brands fa-linkedin"></i> <a id="pf-linkedin-link" href="#" target="_blank" rel="noopener">LinkedIn</a></span>
+    </p>
+  </div>
 </header>
-<section>
-<h2>À propos de moi</h2>
-<p>Je suis passionné par le développement et les technologies numériques. Rigoureux, créatif et toujours motivé, je cherche à contribuer à des projets innovants tout en renforçant mes compétences techniques.</p>
-</section>
-<section>
-<h2>Diplômes &amp; Certifications </h2>
-<ul>
-<li><b>Juillet 2026 :</b> CERTIFICATION AI FOR ALL – Microsoft Learn / MTN Skills Academy</li>
-<li><b>Juillet 2026 :</b> CERTIFICATION INTERNET FUNDAMENTALS – GSMA / MTN Skills Academy</li>
-<li><b>2025 - 2026 :</b> LICENCE 3 INFORMATIQUE GÉNIE LOGICIEL – Atlantique International Business School (AIBS), Cocody Danga</li>
-<li><b>2024 – 2025 :</b> BTS Informatique Développeur d'Applications – Institut International Polytechnique des Elites d'Abidjan (IIPEA), Cocody Riviera-2</li>
-<li><b>2022 – 2023 :</b> Baccalauréat série D – Lycée Garçons de Bingerville</li>
-<li><b>2020 – 2022 :</b> Certificate "English Access Microscholarship" – Ambassade des États-Unis (en CI)</li>
-<li><b>2019 – 2020 :</b> BEPC – Lycée Garçons de Bingerville</li>
-</ul>
-</section>
-<section>
-<h2>Domaines de Compétences</h2>
-<div class="skills">
-<div class="card" id="c1">💻 Développement web : HTML, CSS, JavaScript, PHP</div>
-<div class="card" id="c2">⚙️ Programmation : Python, Java, Algorithmique</div>
-<div class="card" id="c3">🗄️ Bases de données : MySQL</div>
-<div class="card" id="c4">🖥️ Bureautique : Word, Excel, PowerPoint, Internet</div>
-<div class="card" id="c10">📡 Réseau informatique</div>
-<div class="card" id="c9">🧩 Systèmes d'exploitation</div>
-<div class="card" id="c5">🌐 Création de sites web dynamiques et responsives</div>
-</div>
-</section>
-<section>
-<h2>Expériences Professionnelles</h2>
-<ul>
-<li><b>Nov. 2025 – Fév. 2026 :</b> Stage de soutenance – NOVASYS CI<br /><span>Thème : DÉVELOPPEMENT D'UN SYSTÈME D'AUTOMATISATION DE GESTION DES CONGÉS ET ABSENCES</span></li>
-<li><b>Août 2024 – Sept. 2024 :</b> Stage d'immersion professionnelle – NOVASYS CI<br /><span>Projet : VOYAGES HUB – CRÉATION D'UN SITE WEB POUR L'ACHAT EN LIGNE DES TICKETS DE CAR VOYAGEURS</span></li>
-<li><b>Assistant gérant – Cyber café</b><br /><span>Gestion technique des postes et support client</span></li>
-</ul>
-</section>
-<section>
-<h2>Projets</h2>
-<div class="projects">
-<a href="https://conge-online.infinityfreeapp.com" target="_blank" rel="noopener">
-<div class="card" id="c6">
-<h3>🌐 Applications WEB</h3>
-<p>Projet HTML5/CSS3, PHP, MySQL, FPDF. Application web intuitive visant à faciliter les demandes et justifications de congés et absences en entreprise.</p>
-<p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 conge-online.infinityfreeapp.com</p>
-</div>
-</a>
-<a href="https://voyages-hub.ifree.page/" target="_blank" rel="noopener">
 
-<div class="card" id="c11">
-<h3>🧭 Site web (<span>VOYAGES-HUB</span>)</h3>
-<p>Projet HTML5/CSS3 de vente de tickets de car de voyages en ligne. <br /><br /><br /><br /></p>
-    <p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 https://voyages-hub.ifree.page/</p>
+<section>
+  <h2><i class="fa-solid fa-circle-info"></i> À propos de moi</h2>
+  <p id="pf-about"></p>
+</section>
+
+<section>
+  <h2><i class="fa-solid fa-graduation-cap"></i> Diplômes &amp; Certifications</h2>
+  <ul id="pf-education"></ul>
+</section>
+
+<section>
+  <h2><i class="fa-solid fa-screwdriver-wrench"></i> Domaines de Compétences</h2>
+  <div class="skills" id="pf-skills"></div>
+</section>
+
+<section>
+  <h2><i class="fa-solid fa-briefcase"></i> Expériences Professionnelles</h2>
+  <ul id="pf-experience"></ul>
+</section>
+
+<section>
+  <h2><i class="fa-solid fa-diagram-project"></i> Projets</h2>
+  <div class="projects" id="pf-projects"></div>
+</section>
+
+<section>
+  <h2><i class="fa-solid fa-language"></i> Langues</h2>
+  <div class="projects" id="pf-languages"></div>
+</section>
+
+<section>
+  <h2><i class="fa-solid fa-star"></i> Autres Atouts</h2>
+  <ul id="pf-atouts"></ul>
+</section>
+
+<section>
+  <h2><i class="fa-solid fa-people-group"></i> Engagement &amp; Leadership</h2>
+  <ul id="pf-engagement"></ul>
+</section>
+
+<section>
+  <h2><i class="fa-solid fa-heart"></i> Centres d'Intérêt</h2>
+  <p id="pf-interests"></p>
+</section>
+
+<section>
+  <h2><i class="fa-solid fa-comment-dots"></i> Contact</h2>
+  <form class="contact-form" id="contactForm" onsubmit="sendEmail(event)">
+    <input type="text" id="name" placeholder="Votre nom" required />
+    <input type="email" id="email" placeholder="Votre email" required />
+    <textarea rows="5" id="message" placeholder="Votre message" required></textarea>
+    <button type="submit"><i class="fa-solid fa-paper-plane"></i> Envoyer</button>
+  </form>
+</section>
+
+<footer><p id="pf-footer"></p></footer>
 
 </div>
-</a>
-<div class="card" id="c7">
-<h3>📊 Application de gestion</h3>
-<p>Développement d'une mini-application en Python avec gestion de fichiers.</p>
+<!-- ═════════ FIN CONTENU PORTFOLIO ═════════ -->
+
+<!-- Modal messages reçus -->
+<div id="messagesModal" class="modal-overlay">
+  <div class="modal-box">
+    <h2><i class="fa-solid fa-envelope-open-text"></i> Messages reçus</h2>
+    <div id="messagesList"></div>
+    <div class="modal-actions">
+      <button class="btn-ghost" onclick="closeMessages()"><i class="fa-solid fa-xmark"></i> Fermer</button>
+      <button id="clearMessagesBtn" class="btn-primary" style="display:none;background:#dc3545;" onclick="clearAllMessages()"><i class="fa-solid fa-trash"></i> Vider les messages</button>
+    </div>
+  </div>
 </div>
-<div class="card" id="c8">
-<h3>📝 Blog dynamique</h3>
-<p>Projet PHP/MySQL permettant la publication d'articles en ligne.</p>
+
+<!-- Modal connexion admin -->
+<div id="adminLoginModal" class="modal-overlay">
+  <div class="modal-box" style="text-align:center;">
+    <div class="login-icon"><i class="fa-solid fa-shield-halved"></i></div>
+    <h2 style="justify-content:center;">Espace Admin</h2>
+    <p style="color:#8a93a6; margin-top:-6px;">Connectez-vous pour modifier le contenu du portfolio.</p>
+    <input type="password" id="adminPasswordInput" placeholder="Mot de passe" onkeydown="if(event.key==='Enter')attemptAdminLogin();" />
+    <div class="err" id="adminLoginError"></div>
+    <div class="modal-actions">
+      <button class="btn-ghost" onclick="closeAdminLogin()"><i class="fa-solid fa-xmark"></i> Annuler</button>
+      <button class="btn-primary" onclick="attemptAdminLogin()"><i class="fa-solid fa-right-to-bracket"></i> Se connecter</button>
+    </div>
+  </div>
 </div>
-<div class="card" id="c15">
-<h3>🥤 Gestion de distributeur de soda</h3>
-<p>Application console en Java simulant la gestion d'un distributeur automatique de boissons (stock, paiement, rendu de monnaie).</p>
+
+<!-- Panneau Admin -->
+<div id="adminPanel" class="admin-panel">
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="admin-brand"><i class="fa-solid fa-user-shield"></i> Admin Portfolio</div>
+    <div id="adminNav"></div>
+    <div class="admin-sidebar-footer">
+      <button class="admin-view-site" onclick="closeAdmin()"><i class="fa-solid fa-eye"></i> <span>Voir le site</span></button>
+      <button class="admin-logout" onclick="adminLogout()"><i class="fa-solid fa-right-from-bracket"></i> <span>Déconnexion</span></button>
+    </div>
+  </aside>
+  <div class="admin-content">
+    <div class="admin-topbar">
+      <h2 id="adminTabTitle">Profil</h2>
+      <div class="admin-save-bar">
+        <button class="btn-reset" onclick="adminResetTab()"><i class="fa-solid fa-rotate-left"></i> Réinitialiser</button>
+        <button class="btn-reset" onclick="exportData()" title="Télécharger data.json avec les modifications en cours"><i class="fa-solid fa-download"></i> Exporter (data.json)</button>
+        <label class="btn-reset" style="cursor:pointer;" title="Charger un fichier data.json">
+          <i class="fa-solid fa-upload"></i> Importer
+          <input type="file" accept="application/json" style="display:none" onchange="importData(this)">
+        </label>
+        <button class="btn-save" onclick="adminSave()"><i class="fa-solid fa-floppy-disk"></i> Enregistrer</button>
+      </div>
+    </div>
+    <div class="admin-body" id="adminBody"></div>
+  </div>
 </div>
-<div class="card" id="c16">
-<h3>🏦 Simulation de système bancaire</h3>
-<p>Application console en Java simulant un système bancaire : gestion de comptes, dépôts, retraits et transactions.</p>
-</div>
-<a href="https://ma-bibliotheque.freepage.cc/?i=1#/" target="_blank" rel="noopener">
-<div class="card" id="c17">
-<h3>📚 Ma Bibliothèque</h3>
-<p>Plateforme web recensant la plupart de mes écrits : réflexions, textes personnels et créations.</p>
-<p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 ma-bibliotheque.freepage.cc</p>
-</div>
-</a>
-<a href="https://joyeusefetedespere.infinityfree.me/" target="_blank" rel="noopener">
-<div class="card" id="c13">
-<h3>👨‍👧 Joyeuse Fête des Pères</h3>
-<p>Site web HTML5/CSS3 célébrant la fête des pères, avec une mise en page festive et responsive.</p>
-<p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 joyeusefetedespere.infinityfree.me</p>
-</div>
-</a>
-<a href="https://happy-mothers-day.infinityfreeapp.com" target="_blank" rel="noopener">
-<div class="card" id="c14">
-<h3>👩‍👧 Happy Mother's Day</h3>
-<p>Site web HTML5/CSS3 dédié à la fête des mères, conçu avec une interface soignée et responsive.</p>
-<p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 happy-mothers-day.infinityfreeapp.com</p>
-</div>
-</a>
-<a href="https://eagle-leadership-academie.page.gd" target="_blank" rel="noopener">
-<div class="card" id="c12">
-<h3>🏫 Gestion des inscriptions scolaires</h3>
-<p>Application web de gestion des inscriptions pour <span>Eagle Leadership Académie</span>. Interface permettant la saisie, le suivi et la validation des dossiers d'élèves.</p>
-<p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 eagle-leadership-academie.page.gd</p>
-</div>
-</a>
-<a href="https://eyes-on-you.freedev.app/connexion.php" target="_blank" rel="noopener">
-<div class="card" id="c18">
-<h3>📍 Eyes On You</h3>
-<p>Site web de localisation et de rencontre basé sur la position géographique et la proximité, avec un système de chat intégré.</p>
-<p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 eyes-on-you.freedev.app</p>
-</div>
-</a>
-</div>
-</section>
-<section>
-<h2>Langues</h2>
-<div class="projects">
-<div class="card" id="l1">
-<h3>🇫🇷 Français</h3>
-<p>⭐⭐⭐⭐⭐</p>
-</div>
-<div class="card" id="l2">
-<h3>🇬🇧 Anglais</h3>
-<p>⭐⭐⭐⭐☆</p>
-</div>
-<div class="card" id="l3">
-<h3>🇩🇪 Allemand</h3>
-<p>⭐⭐⭐☆☆</p>
-</div>
-</div>
-</section>
-<section>
-<h2>Autres Atouts</h2>
-<ul>
-<li>✨ Dynamique</li>
-<li>🎨 Créatif</li>
-<li>⏰ Ponctuel</li>
-<li>📐 Rigoureux</li>
-<li>🤝 Serviable</li>
-<li>🚗 Permis de conduire AB (en cours)</li>
-</ul>
-</section>
-<section>
-<h2>Engagement &amp; Leadership</h2>
-<ul>
-<li>🌟 Membre fondateur de l'ONG LEADER'S HEART</li>
-<li>📢 Responsable communication de l'ONG LEADER'S HEART</li>
-<li>🎤 Président du club de débat contradictoire au Lycée Garçons, Bingerville</li>
-</ul>
-</section>
-<section>
-<h2>Centres d'Intérêt</h2>
-<p>📚 Développement personnel &amp; lecture | ✍️ Écriture | ⚽ Sport | 💚 Bénévolat et actions communautaires</p>
-</section>
-<section>
-<h2>Contact</h2>
-<form id="contactForm" onsubmit="sendEmail(event)"><input type="text" id="name" placeholder="Votre nom" required="" /> <input type="email" id="email" placeholder="Votre email" required="" /> <textarea rows="5" id="message" placeholder="Votre message" required=""></textarea> <button type="submit">Envoyer</button></form></section>
-<footer>
-<p>© 2025 - Portfolio de Zanga Cheick Omar DIOURTE</p>
-</footer></div>
-<!-- Modal messages -->
-<div id="messagesModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); padding: 40px; z-index: 2000; overflow: auto;">
-<div style="background: white; padding: 20px; max-width: 600px; margin: auto; border-radius: 10px; color: #333;">
-<h2>📨 Messages reçus</h2>
-<div id="messagesList"></div>
-<div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;"><button onclick="closeMessages()" style="background: #1e3c72; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Fermer</button> <button id="clearMessagesBtn" onclick="clearAllMessages()" style="display: none; background: #dc3545; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">🗑️ Vider les messages</button></div>
-</div>
-</div>
-<p>
+
 <script>
-// ─── DARK MODE ───────────────────────────────────────────────
-function toggleDarkMode() {
-  document.body.classList.toggle("dark-mode");
-  const btn = document.querySelector('.toggle-btn');
-  btn.textContent = document.body.classList.contains('dark-mode') ? '☀️ Mode clair' : '🌙 Mode sombre';
+/* ══════════════════════════════════════════════════════════════
+   DONNÉES PAR DÉFAUT
+   Chargées depuis data.json (voir loadDefaultData() plus bas).
+   Ce bloc ne sert plus que de secours si data.json est introuvable
+   (ex: ouverture du fichier en double-clic sans serveur local).
+   ══════════════════════════════════════════════════════════════ */
+const FALLBACK_DEFAULT_DATA = {
+  profile: {
+    name: "Zanga Cheick Omar DIOURTE",
+    subtitle: "TECHNICIEN SUPÉRIEUR INFORMATIQUE - DÉVELOPPEUR D'APPLICATION",
+    nationalityBadge: "🇨🇮 Ivoirien",
+    ageBadge: "19 ans",
+    location: "Bingerville, Abidjan – Côte d'Ivoire",
+    phone: "+225 05 84 87 64 67",
+    email: "diourtecheick@gmail.com",
+    linkedin: "https://www.linkedin.com/in/zanga-cheick-omar-diourte-81a458221",
+    photo: "3.png"
+  },
+  about: "Je suis passionné par le développement et les technologies numériques. Rigoureux, créatif et toujours motivé, je cherche à contribuer à des projets innovants tout en renforçant mes compétences techniques.",
+  education: [
+    { period: "Juillet 2026", title: "CERTIFICATION AI FOR ALL", school: "Microsoft Learn / MTN Skills Academy" },
+    { period: "Juillet 2026", title: "CERTIFICATION INTERNET FUNDAMENTALS", school: "GSMA / MTN Skills Academy" },
+    { period: "2025 - 2026", title: "LICENCE 3 INFORMATIQUE GÉNIE LOGICIEL", school: "Atlantique International Business School (AIBS), Cocody Danga" },
+    { period: "2024 – 2025", title: "BTS Informatique Développeur d'Applications", school: "Institut International Polytechnique des Elites d'Abidjan (IIPEA), Cocody Riviera-2" },
+    { period: "2022 – 2023", title: "Baccalauréat série D", school: "Lycée Garçons de Bingerville" },
+    { period: "2020 – 2022", title: "Certificate \"English Access Microscholarship\"", school: "Ambassade des États-Unis (en CI)" },
+    { period: "2019 – 2020", title: "BEPC", school: "Lycée Garçons de Bingerville" }
+  ],
+  skills: [
+    { icon: "fa-laptop-code", text: "Développement web : HTML, CSS, JavaScript, PHP" },
+    { icon: "fa-gears", text: "Programmation : Python, Java, Algorithmique" },
+    { icon: "fa-database", text: "Bases de données : MySQL" },
+    { icon: "fa-desktop", text: "Bureautique : Word, Excel, PowerPoint, Internet" },
+    { icon: "fa-satellite-dish", text: "Réseau informatique" },
+    { icon: "fa-puzzle-piece", text: "Systèmes d'exploitation" },
+    { icon: "fa-globe", text: "Création de sites web dynamiques et responsives" }
+  ],
+  experience: [
+    { period: "Nov. 2025 – Fév. 2026", role: "Stage de soutenance – NOVASYS CI", detail: "Thème : Développement d'un système d'automatisation de gestion des congés et absences." },
+    { period: "Août 2024 – Sept. 2024", role: "Stage d'immersion professionnelle – NOVASYS CI", detail: "Projet : VOYAGES HUB – Création d'un site web pour l'achat en ligne des tickets de car voyageurs." },
+    { period: "Poste antérieur", role: "Assistant gérant – Cyber café", detail: "Gestion technique des postes et support client." }
+  ],
+  projects: [
+    { icon: "fa-globe", title: "Applications WEB", desc: "Projet HTML5/CSS3, PHP, MySQL, FPDF. Application web intuitive visant à faciliter les demandes et justifications de congés et absences en entreprise.", link: "https://conge-online.infinityfreeapp.com", linkLabel: "conge-online.infinityfreeapp.com" },
+    { icon: "fa-compass", title: "Site web (VOYAGES-HUB)", desc: "Projet HTML5/CSS3 de vente de tickets de car de voyages en ligne.", link: "https://voyages-hub.ifree.page/", linkLabel: "voyages-hub.ifree.page" },
+    { icon: "fa-chart-column", title: "Application de gestion", desc: "Développement d'une mini-application en Python avec gestion de fichiers.", link: "", linkLabel: "" },
+    { icon: "fa-pen-to-square", title: "Blog dynamique", desc: "Projet PHP/MySQL permettant la publication d'articles en ligne.", link: "", linkLabel: "" },
+    { icon: "fa-glass-water", title: "Gestion de distributeur de soda", desc: "Application console en Java simulant la gestion d'un distributeur automatique de boissons (stock, paiement, rendu de monnaie).", link: "", linkLabel: "" },
+    { icon: "fa-building-columns", title: "Simulation de système bancaire", desc: "Application console en Java simulant un système bancaire : gestion de comptes, dépôts, retraits et transactions.", link: "", linkLabel: "" },
+    { icon: "fa-book", title: "Ma Bibliothèque", desc: "Plateforme web recensant la plupart de mes écrits : réflexions, textes personnels et créations.", link: "https://ma-bibliotheque.freepage.cc/?i=1#/", linkLabel: "ma-bibliotheque.freepage.cc" },
+    { icon: "fa-heart", title: "Joyeuse Fête des Pères", desc: "Site web HTML5/CSS3 célébrant la fête des pères, avec une mise en page festive et responsive.", link: "https://joyeusefetedespere.infinityfree.me/", linkLabel: "joyeusefetedespere.infinityfree.me" },
+    { icon: "fa-heart", title: "Happy Mother's Day", desc: "Site web HTML5/CSS3 dédié à la fête des mères, conçu avec une interface soignée et responsive.", link: "https://happy-mothers-day.infinityfreeapp.com", linkLabel: "happy-mothers-day.infinityfreeapp.com" },
+    { icon: "fa-school", title: "Gestion des inscriptions scolaires", desc: "Application web de gestion des inscriptions pour Eagle Leadership Académie. Interface permettant la saisie, le suivi et la validation des dossiers d'élèves.", link: "https://eagle-leadership-academie.page.gd", linkLabel: "eagle-leadership-academie.page.gd" },
+    { icon: "fa-location-dot", title: "Eyes On You", desc: "Site web de localisation et de rencontre basé sur la position géographique et la proximité, avec un système de chat intégré.", link: "https://eyes-on-you.freedev.app/connexion.php", linkLabel: "eyes-on-you.freedev.app" }
+  ],
+  languages: [
+    { flagName: "🇫🇷 Français", level: 5 },
+    { flagName: "🇬🇧 Anglais", level: 4 },
+    { flagName: "🇩🇪 Allemand", level: 3 }
+  ],
+  atouts: [
+    { icon: "fa-bolt", text: "Dynamique" },
+    { icon: "fa-palette", text: "Créatif" },
+    { icon: "fa-clock", text: "Ponctuel" },
+    { icon: "fa-ruler-combined", text: "Rigoureux" },
+    { icon: "fa-handshake", text: "Serviable" },
+    { icon: "fa-car", text: "Permis de conduire AB (en cours)" }
+  ],
+  engagement: [
+    { icon: "fa-star", text: "Membre fondateur de l'ONG LEADER'S HEART" },
+    { icon: "fa-bullhorn", text: "Responsable communication de l'ONG LEADER'S HEART" },
+    { icon: "fa-microphone", text: "Président du club de débat contradictoire au Lycée Garçons, Bingerville" }
+  ],
+  interests: [
+    { icon: "fa-book", text: "Développement personnel & lecture" },
+    { icon: "fa-pen", text: "Écriture" },
+    { icon: "fa-futbol", text: "Sport" },
+    { icon: "fa-hand-holding-heart", text: "Bénévolat et actions communautaires" }
+  ],
+  footer: "© 2025 - Portfolio de Zanga Cheick Omar DIOURTE",
+  textColors: {
+    name: "",
+    subtitle: "",
+    headings: "",
+    body: "",
+    footer: ""
+  }
+};
+
+const ADMIN_PASSWORD = "cheickestlegoat";
+const API_URL = "api.php";
+const DATA_JSON_URL = "data.json";
+
+// Couleurs déjà utilisées dans le CSS du site (variables :root + couleurs
+// courantes), proposées comme nuancier pour la personnalisation des textes.
+const TEXT_COLOR_PALETTE = [
+  { name: "Bleu marine",  value: "#1e3c72" }, // --navy
+  { name: "Bleu",         value: "#2a5298" }, // --blue
+  { name: "Gris clair",   value: "#eef2f8" }, // --lgray
+  { name: "Gris",         value: "#6b7280" }, // --dgray
+  { name: "Vert (succès)",value: "#28a745" }, // --success
+  { name: "Rouge",        value: "#dc3545" }, // --danger
+  { name: "Cyan (info)",  value: "#17a2b8" }, // --info
+  { name: "Blanc",        value: "#ffffff" },
+  { name: "Noir",         value: "#333333" }
+];
+
+// Données par défaut réellement utilisées (remplies par loadDefaultData()).
+let DEFAULT_DATA = deepCloneSafe(FALLBACK_DEFAULT_DATA);
+// Données courantes (en mémoire uniquement — aucune persistance disque
+// n'est possible depuis le navigateur ; voir exportData()/importData()).
+let CURRENT_DATA = null;
+// État de connexion admin, en mémoire pour la session en cours uniquement.
+let isAdminLoggedIn = false;
+// Messages de contact reçus pendant la session en cours (voir sendEmail()).
+let CONTACT_MESSAGES = [];
+// Mode sombre, en mémoire pour la session en cours uniquement.
+let isDarkMode = false;
+
+function deepCloneSafe(o){ return o ? JSON.parse(JSON.stringify(o)) : o; }
+
+async function apiCall(action, extra = {}){
+  const res = await fetch(API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ action, ...extra })
+  });
+  const json = await res.json();
+  if (!res.ok || !json.success){
+    throw new Error(json.message || "Erreur serveur");
+  }
+  return json;
 }
 
-// ─── NOTIFICATION ────────────────────────────────────────────
+async function loadDefaultData(){
+  // 1) On essaie d'abord api.php (lecture/écriture réelle côté serveur).
+  try{
+    const json = await apiCall("get_data");
+    if (json.data){
+      DEFAULT_DATA = json.data;
+      CURRENT_DATA = deepClone(DEFAULT_DATA);
+      return;
+    }
+  }catch(e){
+    console.warn("api.php indisponible, tentative de lecture directe de data.json.", e);
+  }
+  // 2) Sinon on essaie de lire data.json directement (site statique sans PHP).
+  try{
+    const res = await fetch(DATA_JSON_URL, { cache: "no-store" });
+    if (res.ok){
+      DEFAULT_DATA = await res.json();
+    }
+  }catch(e){
+    // 3) En dernier recours : données de secours intégrées dans le HTML.
+    console.warn("data.json introuvable, utilisation des données de secours intégrées.", e);
+  }
+  CURRENT_DATA = deepClone(DEFAULT_DATA);
+}
+
+const COLOR_PALETTE = [
+  { bg:"#8a2be2", fg:"#ffffff" },
+  { bg:"#f1c40f", fg:"#1e3c72" },
+  { bg:"rgb(176,67,67)", fg:"#f4f4f4" },
+  { bg:"rgb(86,86,202)", fg:"#f4f4f4" },
+  { bg:"#ff8fc7", fg:"#1e3c72" },
+  { bg:"rgb(116,191,238)", fg:"#1e3c72" },
+  { bg:"rgb(115,230,178)", fg:"#1e3c72" },
+  { bg:"rgb(249,196,123)", fg:"#1e3c72" },
+  { bg:"rgb(13,47,68)", fg:"#f4f4f4" },
+  { bg:"rgb(66,14,50)", fg:"#f4f4f4" },
+  { bg:"rgb(185,231,249)", fg:"#000000" },
+  { bg:"rgb(34,139,87)", fg:"#ffffff" },
+  { bg:"rgb(74,144,226)", fg:"#ffffff" },
+  { bg:"rgb(231,84,128)", fg:"#ffffff" },
+  { bg:"rgb(230,126,34)", fg:"#ffffff" },
+  { bg:"rgb(52,73,94)", fg:"#ffffff" },
+  { bg:"rgb(155,89,182)", fg:"#ffffff" },
+  { bg:"rgb(214,64,90)", fg:"#ffffff" }
+];
+
+/* ══════════════════════════════════════════════════════════════
+   UTILITAIRES
+   ══════════════════════════════════════════════════════════════ */
+function esc(str){
+  return String(str ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function deepClone(o){ return JSON.parse(JSON.stringify(o)); }
+
+function getData(){
+  if (!CURRENT_DATA) CURRENT_DATA = deepClone(DEFAULT_DATA);
+  return CURRENT_DATA;
+}
+
+async function saveData(data){
+  CURRENT_DATA = data;
+  try{
+    await apiCall("save_data", { password: ADMIN_PASSWORD, data });
+    return { ok: true, serverSaved: true };
+  }catch(e){
+    console.warn("Écriture serveur impossible (api.php absent ou inaccessible).", e);
+    return { ok: true, serverSaved: false };
+  }
+}
+
+function exportData(){
+  const blob = new Blob([JSON.stringify(CURRENT_DATA || DEFAULT_DATA, null, 2)], { type: "application/json" });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement("a");
+  a.href = url;
+  a.download = "data.json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+  showMessage("data.json téléchargé (sauvegarde manuelle). Avec api.php en place, l'enregistrement admin écrit déjà directement sur le serveur.", "info");
+}
+
+function importData(input){
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try{
+      const parsed = JSON.parse(e.target.result);
+      const merged = deepClone(DEFAULT_DATA);
+      for(const key in parsed){ merged[key] = parsed[key]; }
+      CURRENT_DATA = merged;
+      adminDraft = deepClone(merged);
+      renderPublicSite(CURRENT_DATA);
+      if (document.getElementById('adminPanel').classList.contains('open')){
+        renderAdminTabBody(ADMIN_TABS.find(t => t.key === currentAdminTab));
+      }
+      showMessage("Données importées avec succès !", "success");
+    }catch(err){
+      showMessage("Fichier JSON invalide.", "error");
+    }
+  };
+  reader.readAsText(file);
+  input.value = "";
+}
+
 function showMessage(message, type = 'info') {
   const d = document.getElementById('statusMessage');
   d.textContent = message;
@@ -397,11 +641,124 @@ function showMessage(message, type = 'info') {
   setTimeout(() => d.classList.remove('show'), 4000);
 }
 
-// ═════════════════════════════════════════════════════════════
-//  GÉNÉRATION PDF — mode texte pur (net comme un Word)
-// ═════════════════════════════════════════════════════════════
+/* ══════════════════════════════════════════════════════════════
+   RENDU DU PORTFOLIO PUBLIC
+   ══════════════════════════════════════════════════════════════ */
+function starRating(level){
+  level = Math.max(0, Math.min(5, parseInt(level) || 0));
+  let html = '<span class="stars">';
+  for(let i=0;i<5;i++){
+    html += i < level ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star"></i>';
+  }
+  return html + '</span>';
+}
+
+function renderPublicSite(data){
+  data = data || getData();
+
+  // Profil
+  document.getElementById('pf-photo').src = data.profile.photo || "3.png";
+  document.getElementById('pf-name').textContent = data.profile.name;
+  document.getElementById('pf-subtitle').textContent = data.profile.subtitle;
+  document.getElementById('pf-badge-nat').textContent = data.profile.nationalityBadge;
+  document.getElementById('pf-badge-age').textContent = data.profile.ageBadge;
+  document.getElementById('pf-location').textContent = data.profile.location;
+  document.getElementById('pf-phone').textContent = data.profile.phone;
+  document.getElementById('pf-phone-link').href = "tel:" + (data.profile.phone || "").replace(/\s+/g,'');
+  document.getElementById('pf-email').textContent = data.profile.email;
+  document.getElementById('pf-email-link').href = "mailto:" + data.profile.email;
+  document.getElementById('pf-linkedin-link').href = data.profile.linkedin;
+
+  document.title = "Portfolio - " + data.profile.name;
+
+  // À propos
+  document.getElementById('pf-about').textContent = data.about;
+
+  // Formation
+  document.getElementById('pf-education').innerHTML = data.education.map(e =>
+    `<li><b>${esc(e.period)} :</b> ${esc(e.title)} – ${esc(e.school)}</li>`
+  ).join('');
+
+  // Compétences
+  document.getElementById('pf-skills').innerHTML = data.skills.map((s,i) => {
+    const c = COLOR_PALETTE[i % COLOR_PALETTE.length];
+    return `<div class="card hover-card" style="--hbg:${c.bg};--hfg:${c.fg}"><i class="fa-solid ${esc(s.icon)} field-icon"></i>${esc(s.text)}</div>`;
+  }).join('');
+
+  // Expériences
+  document.getElementById('pf-experience').innerHTML = data.experience.map(x =>
+    `<li><b>${esc(x.period)} :</b> ${esc(x.role)}<br /><span>${esc(x.detail)}</span></li>`
+  ).join('');
+
+  // Projets
+  document.getElementById('pf-projects').innerHTML = data.projects.map((p,i) => {
+    const c = COLOR_PALETTE[i % COLOR_PALETTE.length];
+    const inner = `<div class="card hover-card" style="--hbg:${c.bg};--hfg:${c.fg}">
+        <h3><i class="fa-solid ${esc(p.icon)} field-icon"></i>${esc(p.title)}</h3>
+        <p>${esc(p.desc)}</p>
+        ${p.link ? `<p class="project-link"><i class="fa-solid fa-link"></i> ${esc(p.linkLabel || p.link)}</p>` : ''}
+      </div>`;
+    return p.link ? `<a href="${esc(p.link)}" target="_blank" rel="noopener">${inner}</a>` : inner;
+  }).join('');
+
+  // Langues
+  document.getElementById('pf-languages').innerHTML = data.languages.map((l,i) => {
+    const c = COLOR_PALETTE[(i+5) % COLOR_PALETTE.length];
+    return `<div class="card hover-card" style="--hbg:${c.bg};--hfg:${c.fg}"><h3>${esc(l.flagName)}</h3><p>${starRating(l.level)}</p></div>`;
+  }).join('');
+
+  // Atouts
+  document.getElementById('pf-atouts').innerHTML = data.atouts.map(a =>
+    `<li><i class="fa-solid ${esc(a.icon)} field-icon"></i>${esc(a.text)}</li>`
+  ).join('');
+
+  // Engagement
+  document.getElementById('pf-engagement').innerHTML = data.engagement.map(e =>
+    `<li><i class="fa-solid ${esc(e.icon)} field-icon"></i>${esc(e.text)}</li>`
+  ).join('');
+
+  // Centres d'intérêt
+  document.getElementById('pf-interests').innerHTML = data.interests.map(x =>
+    `<span><i class="fa-solid ${esc(x.icon)}"></i> ${esc(x.text)}</span>`
+  ).join(' &nbsp;|&nbsp; ');
+
+  // Footer
+  document.getElementById('pf-footer').textContent = data.footer;
+
+  // Couleurs des textes personnalisées
+  applyTextColors(data.textColors || {});
+}
+
+function applyTextColors(tc){
+  const set = (el, color) => { if (el) el.style.color = color || ''; };
+
+  set(document.getElementById('pf-name'), tc.name);
+  set(document.getElementById('pf-subtitle'), tc.subtitle);
+  document.querySelectorAll('section > h2').forEach(h => set(h, tc.headings));
+  set(document.getElementById('pf-about'), tc.body);
+  set(document.getElementById('pf-footer'), tc.footer);
+  ['pf-education','pf-experience','pf-atouts','pf-engagement'].forEach(id => set(document.getElementById(id), tc.body));
+  set(document.getElementById('pf-interests'), tc.body);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   MODE SOMBRE
+   ══════════════════════════════════════════════════════════════ */
+function toggleDarkMode() {
+  document.body.classList.toggle("dark-mode");
+  const btn = document.getElementById('darkToggleBtn');
+  isDarkMode = document.body.classList.contains('dark-mode');
+  btn.innerHTML = isDarkMode ? '<i class="fa-solid fa-sun"></i> Mode clair' : '<i class="fa-solid fa-moon"></i> Mode sombre';
+  // Le mode sombre n'est plus mémorisé entre les visites (pas de localStorage) :
+  // il repart de "clair" à chaque chargement de la page.
+}
+
+/* ══════════════════════════════════════════════════════════════
+   GÉNÉRATION PDF — mode texte pur (net comme un Word)
+   ══════════════════════════════════════════════════════════════ */
 function generatePDF() {
   showMessage('Génération du PDF...', 'info');
+  const data = getData();
 
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
@@ -412,7 +769,6 @@ function generatePDF() {
   let y = MT;
 
   const NAVY  = [30, 60, 114];
-  const BLUE  = [42, 82, 152];
   const WHITE = [255, 255, 255];
   const LGRAY = [240, 244, 250];
   const DGRAY = [80, 80, 80];
@@ -423,23 +779,17 @@ function generatePDF() {
     doc.setFontSize(size);
     doc.setTextColor(...color);
   };
-
   const rect = (x, yy, w, h, color, radius = 0) => {
     doc.setFillColor(...color);
     if (radius) doc.roundedRect(x, yy, w, h, radius, radius, 'F');
     else        doc.rect(x, yy, w, h, 'F');
   };
-
   const line = (x1, yy, x2, color = NAVY, thickness = 0.3) => {
     doc.setDrawColor(...color);
     doc.setLineWidth(thickness);
     doc.line(x1, yy, x2, yy);
   };
-
-  const checkPage = (needed = 10) => {
-    if (y + needed > PH - 10) { doc.addPage(); y = 15; }
-  };
-
+  const checkPage = (needed = 10) => { if (y + needed > PH - 10) { doc.addPage(); y = 15; } };
   const sectionTitle = (title) => {
     checkPage(14);
     rect(0, y, PW, 8, NAVY);
@@ -447,13 +797,12 @@ function generatePDF() {
     doc.text(title.toUpperCase(), ML, y + 5.5);
     y += 12;
   };
-
   const expItem = (period, role, detail) => {
     checkPage(18);
     setFont('bold', 9, NAVY);
     doc.text(period, ML + 4, y);
     y += 5;
-    setFont('bold', 9.5, BLUE);
+    setFont('bold', 9.5, [42,82,152]);
     const rLines = doc.splitTextToSize(role, CW - 4);
     doc.text(rLines, ML + 4, y);
     y += rLines.length * 5;
@@ -462,13 +811,11 @@ function generatePDF() {
     doc.text(dLines, ML + 8, y);
     y += dLines.length * 4.5 + 4;
   };
-
   const skillBadge = (txt, x, yy, w) => {
     rect(x, yy - 4, w, 6.5, LGRAY, 1.5);
     setFont('normal', 8, NAVY);
     doc.text(txt, x + w / 2, yy, { align: 'center' });
   };
-
   const langBar = (langue, niveau, maxLvl = 5) => {
     checkPage(8);
     setFont('bold', 9, BLACK);
@@ -481,7 +828,7 @@ function generatePDF() {
       doc.roundedRect(barX + i * (barW + gap), y - 3, barW, barH, 0.8, 0.8, 'F');
     }
     setFont('normal', 8, DGRAY);
-    const labels = ['Notions','Elémentaire','Intermédiaire','Avancé','Courant/Bilingue'];
+    const labels = ['Notions','Elementaire','Intermediaire','Avance','Courant/Bilingue'];
     doc.text(labels[niveau - 1] || '', barX + maxLvl * (barW + gap) + 2, y);
     y += 7;
   };
@@ -489,106 +836,68 @@ function generatePDF() {
   // EN-TÊTE
   rect(0, 0, PW, 42, NAVY);
   setFont('bold', 20, WHITE);
-  doc.text('Zanga Cheick Omar DIOURTE', ML, 13);
-  line(ML, 16, PW - MR, [255,255,255,0.4], 0.3);
+  doc.text(data.profile.name, ML, 13);
+  line(ML, 16, PW - MR, [255,255,255], 0.3);
   setFont('bold', 10, [180, 210, 240]);
-  doc.text('TECHNICIEN SUPERIEUR INFORMATIQUE  —  DEVELOPPEUR D\'APPLICATION', ML, 22);
+  doc.text(data.profile.subtitle, ML, 22);
   setFont('normal', 8.5, [220, 235, 255]);
-  doc.text('Bingerville, Abidjan – Cote d\'Ivoire', ML, 29);
-  doc.text('+225 05 84 87 64 67', ML, 34);
-  doc.text('diourtecheick@gmail.com', ML + 55, 34);
-  doc.text('linkedin.com/in/zanga-cheick-omar-diourte-81a458221', ML, 39);
+  doc.text(data.profile.location, ML, 29);
+  doc.text(data.profile.phone, ML, 34);
+  doc.text(data.profile.email, ML + 55, 34);
+  doc.text(data.profile.linkedin.replace(/^https?:\/\//,''), ML, 39);
   setFont('normal', 8, [180, 210, 240]);
-  doc.text('Ivoirien  |  19 ans', PW - MR - 30, 34, { align: 'right' });
+  doc.text(`${data.profile.nationalityBadge.replace(/^\S+\s/,'')}  |  ${data.profile.ageBadge}`, PW - MR - 30, 34, { align: 'right' });
   y = 50;
 
   // À PROPOS
   sectionTitle('A propos de moi');
   setFont('normal', 9, BLACK);
-  const aboutLines = doc.splitTextToSize(
-    'Passionne par le developpement et les technologies numeriques. Rigoureux, creatif et toujours motive, je cherche a contribuer a des projets innovants tout en renforcant mes competences techniques.',
-    CW
-  );
+  const aboutLines = doc.splitTextToSize(data.about, CW);
   doc.text(aboutLines, ML, y);
   y += aboutLines.length * 5 + 4;
 
   // FORMATION
   sectionTitle('Formation & Diplomes');
-  const formations = [
-    ['2025',          'Licence 3 Informatique Genie Logiciel', 'AIBS – Atlantique International Business School, Cocody Danga'],
-    ['2024 – 2025',   'BTS Informatique – Developpeur d\'Applications', 'IIPEA – Institut International Polytechnique des Elites d\'Abidjan, Riviera-2'],
-    ['2022 – 2023',   'Baccalaureat serie D', 'Lycee Garcons de Bingerville'],
-    ['2020 – 2022',   'Certificate "English Access Microscholarship"', 'Ambassade des Etats-Unis en Cote d\'Ivoire'],
-    ['2019 – 2020',   'BEPC', 'Lycee Garcons de Bingerville'],
-  ];
-  for (const [year, diploma, school] of formations) {
+  for (const f of data.education) {
     checkPage(14);
     rect(ML, y - 4, 28, 6, LGRAY, 1);
     setFont('bold', 8, NAVY);
-    doc.text(year, ML + 14, y, { align: 'center' });
+    doc.text(f.period, ML + 14, y, { align: 'center' });
     setFont('bold', 9, BLACK);
-    const dLines = doc.splitTextToSize(diploma, CW - 34);
+    const dLines = doc.splitTextToSize(f.title, CW - 34);
     doc.text(dLines, ML + 32, y);
     setFont('normal', 8, DGRAY);
-    const sLines = doc.splitTextToSize(school, CW - 34);
+    const sLines = doc.splitTextToSize(f.school, CW - 34);
     doc.text(sLines, ML + 32, y + dLines.length * 5);
     y += dLines.length * 5 + sLines.length * 4.5 + 4;
   }
 
   // COMPÉTENCES
   sectionTitle('Competences Techniques');
-  const skills = [
-    'HTML · CSS · JavaScript · PHP',
-    'Python · Java · Algorithmique',
-    'MySQL',
-    'Word · Excel · PowerPoint',
-    'Reseaux informatiques',
-    'Systemes d\'exploitation',
-    'Sites web dynamiques & responsives',
-  ];
+  const skillTexts = data.skills.map(s => s.text);
   const bW = (CW - 10) / 3 - 2;
   let bX = ML;
-  for (let i = 0; i < skills.length; i++) {
+  for (let i = 0; i < skillTexts.length; i++) {
     checkPage(10);
-    skillBadge(skills[i], bX, y, bW);
+    skillBadge(skillTexts[i], bX, y, bW);
     bX += bW + 4;
-    if ((i + 1) % 3 === 0 || i === skills.length - 1) { bX = ML; y += 9; }
+    if ((i + 1) % 3 === 0 || i === skillTexts.length - 1) { bX = ML; y += 9; }
   }
   y += 4;
 
   // EXPÉRIENCES
   sectionTitle('Experiences Professionnelles');
-  expItem('Nov. 2025 – Fev. 2026', 'Stage de soutenance – NOVASYS CI',
-    'Developpement d\'un systeme d\'automatisation de gestion des conges et absences.');
-  expItem('Aout 2024 – Sept. 2024', 'Stage d\'immersion professionnelle – NOVASYS CI',
-    'VOYAGES HUB : creation d\'un site web pour l\'achat en ligne de tickets de car voyageurs.');
-  expItem('Poste anterieur', 'Assistant gerant – Cyber cafe',
-    'Gestion technique des postes informatiques et support client.');
+  for (const x of data.experience) expItem(x.period, x.role, x.detail);
 
   // PROJETS
   sectionTitle('Projets');
-  const projects = [
-    ['Application WEB – Gestion des conges/absences',
-     'HTML5, CSS3, PHP, MySQL, FPDF. Application intuitive de gestion des demandes de conges et absences en entreprise.'],
-    ['VOYAGES-HUB – Site de vente de tickets',
-     'HTML5, CSS3. Site web de vente en ligne de tickets de car de voyages.'],
-    ['Application de gestion (Python)',
-     'Mini-application Python avec gestion de fichiers et de donnees.'],
-    ['Blog dynamique',
-     'Projet PHP/MySQL de publication et gestion d\'articles en ligne.'],
-    ['Ma Bibliotheque – Recueil d\'ecrits personnels',
-     'Plateforme web recensant la plupart de mes ecrits : reflexions, textes personnels et creations. (ma-bibliotheque.freepage.cc)'],
-    ['Gestion des inscriptions scolaires – Eagle Leadership Academie',
-     'Application web de gestion des inscriptions scolaires. Interface de saisie, suivi et validation des dossiers d\'eleves. (eagle-leadership-academie.page.gd)'],
-    ['Eyes On You – Localisation & rencontre',
-     'Site web de localisation et de rencontre base sur la position geographique et la proximite, avec chat integre. (eyes-on-you.freedev.app)'],
-  ];
-  for (const [title, desc] of projects) {
+  for (const p of data.projects) {
     checkPage(14);
     setFont('bold', 9, NAVY);
-    doc.text('• ' + title, ML, y);
+    doc.text('• ' + p.title, ML, y);
     y += 5;
     setFont('normal', 8.5, DGRAY);
+    let desc = p.desc + (p.link ? `  (${p.linkLabel || p.link})` : '');
     const dl = doc.splitTextToSize(desc, CW - 8);
     doc.text(dl, ML + 6, y);
     y += dl.length * 4.5 + 3;
@@ -597,44 +906,36 @@ function generatePDF() {
   // LANGUES
   checkPage(35);
   sectionTitle('Langues');
-  langBar('Francais',  5);
-  langBar('Anglais',   4);
-  langBar('Allemand',  3);
+  for (const l of data.languages) langBar(l.flagName, l.level);
   y += 2;
 
   // ENGAGEMENT
   sectionTitle('Engagement & Leadership');
-  const engagements = [
-    'Membre fondateur – ONG LEADER\'S HEART',
-    'Responsable communication – ONG LEADER\'S HEART',
-    'President du club de debat contradictoire – Lycee Garcons, Bingerville',
-  ];
-  for (const e of engagements) {
+  for (const e of data.engagement) {
     checkPage(7);
     setFont('normal', 9, BLACK);
-    doc.text('• ' + e, ML, y);
+    doc.text('• ' + e.text, ML, y);
     y += 5.5;
   }
   y += 2;
 
   // ATOUTS
   sectionTitle('Atouts & Qualites');
-  const atouts = ['Dynamique', 'Creatif', 'Ponctuel', 'Rigoureux', 'Serviable', 'Permis AB (en cours)'];
+  const atoutTexts = data.atouts.map(a => a.text);
   const aW = (CW - 10) / 3 - 2;
   let aX = ML;
-  for (let i = 0; i < atouts.length; i++) {
+  for (let i = 0; i < atoutTexts.length; i++) {
     checkPage(10);
-    skillBadge(atouts[i], aX, y, aW);
+    skillBadge(atoutTexts[i], aX, y, aW);
     aX += aW + 4;
-    if ((i + 1) % 3 === 0 || i === atouts.length - 1) { aX = ML; y += 9; }
+    if ((i + 1) % 3 === 0 || i === atoutTexts.length - 1) { aX = ML; y += 9; }
   }
   y += 2;
 
   // CENTRES D'INTÉRÊT
-  sectionTitle('Centres d\'interet');
-  const interests = ['Developpement personnel & lecture', 'Ecriture creative', 'Sport', 'Benevolat & actions communautaires'];
+  sectionTitle("Centres d'interet");
   setFont('normal', 9, BLACK);
-  doc.text(interests.join('   |   '), ML, y);
+  doc.text(data.interests.map(i => i.text).join('   |   '), ML, y);
   y += 6;
 
   // PIED DE PAGE
@@ -643,18 +944,20 @@ function generatePDF() {
     doc.setPage(p);
     rect(0, PH - 8, PW, 8, NAVY);
     setFont('normal', 7.5, WHITE);
-    doc.text('© 2025 — Zanga Cheick Omar DIOURTE  |  diourtecheick@gmail.com  |  +225 05 84 87 64 67', PW / 2, PH - 3, { align: 'center' });
+    doc.text(`${data.profile.name}  |  ${data.profile.email}  |  ${data.profile.phone}`, PW / 2, PH - 3, { align: 'center' });
     if (pageCount > 1) {
       setFont('normal', 7.5, WHITE);
       doc.text(`Page ${p} / ${pageCount}`, PW - MR, PH - 3, { align: 'right' });
     }
   }
 
-  doc.save('CV_Zanga_Cheick_Omar_DIOURTE.pdf');
-  showMessage('CV telecharge avec succes !', 'success');
+  doc.save('CV_' + data.profile.name.replace(/\s+/g,'_') + '.pdf');
+  showMessage('CV téléchargé avec succès !', 'success');
 }
 
-// ─── CONTACT — EmailJS + localStorage ────────────────────────
+/* ══════════════════════════════════════════════════════════════
+   CONTACT — EmailJS + stockage en mémoire (session)
+   ══════════════════════════════════════════════════════════════ */
 async function sendEmail(event) {
   event.preventDefault();
   const name    = document.getElementById('name').value.trim();
@@ -662,7 +965,7 @@ async function sendEmail(event) {
   const message = document.getElementById('message').value.trim();
   const btn     = document.querySelector('#contactForm button[type="submit"]');
   btn.disabled    = true;
-  btn.textContent = '⏳ Envoi en cours...';
+  btn.innerHTML   = '<i class="fa-solid fa-spinner fa-spin"></i> Envoi en cours...';
   showMessage('Envoi en cours...', 'info');
   try {
     await emailjs.send('service_r8q8jll', 'template_zwn7h0d', {
@@ -671,1403 +974,348 @@ async function sendEmail(event) {
       message    : message,
       reply_to   : email,
     });
-    const stored = JSON.parse(localStorage.getItem('portfolio_messages') || '[]');
-    stored.push({ name, email, message, date: new Date().toLocaleString('fr-FR') });
-    localStorage.setItem('portfolio_messages', JSON.stringify(stored));
-    showMessage('✅ Message envoyé avec succès !', 'success');
+    CONTACT_MESSAGES.push({ name, email, message, date: new Date().toLocaleString('fr-FR') });
+    try{
+      await apiCall("add_message", { name, email, message });
+    }catch(e){
+      console.warn("Message non sauvegardé côté serveur (api.php indisponible).", e);
+    }
+    showMessage('Message envoyé avec succès !', 'success');
     document.getElementById('contactForm').reset();
   } catch (err) {
     console.error('EmailJS error:', err);
-    showMessage('❌ Echec de l\'envoi. Vérifiez votre connexion.', 'error');
+    showMessage("Echec de l'envoi. Vérifiez votre connexion.", 'error');
   } finally {
     btn.disabled    = false;
-    btn.textContent = 'Envoyer';
+    btn.innerHTML   = '<i class="fa-solid fa-paper-plane"></i> Envoyer';
   }
 }
 
-function showStoredMessages() {
-  const messages  = JSON.parse(localStorage.getItem('portfolio_messages') || '[]');
+async function showStoredMessages() {
   const container = document.getElementById('messagesList');
+  container.innerHTML = '<p style="color:#8a93a6;text-align:center;"><i class="fa-solid fa-spinner fa-spin"></i> Chargement...</p>';
+  document.getElementById('messagesModal').classList.add('open');
+
+  let messages = CONTACT_MESSAGES;
+  try{
+    const json = await apiCall("get_messages", { password: ADMIN_PASSWORD });
+    messages = json.messages || [];
+    CONTACT_MESSAGES = messages;
+  }catch(e){
+    console.warn("Lecture des messages côté serveur impossible, affichage des messages de la session en cours.", e);
+  }
+
   if (messages.length === 0) {
-    container.innerHTML = '<p style="color:#666;">Aucun message reçu pour le moment.</p>';
+    container.innerHTML = '<p style="color:#8a93a6;text-align:center;">Aucun message reçu pour le moment.</p>';
   } else {
-    container.innerHTML = messages.slice().reverse().map((msg, i) => `
-      <div style="border:1px solid #ddd; padding:12px; margin-bottom:12px; border-radius:8px; background:#f9f9f9; position:relative;">
-        <span style="position:absolute;top:8px;right:10px;font-size:0.75em;color:#999;">${msg.date}</span>
-        <p style="margin:0 0 4px;"><b style="color:#1e3c72;">Nom :</b> ${msg.name}</p>
-        <p style="margin:0 0 4px;"><b style="color:#1e3c72;">Email :</b>
-          <a href="mailto:${msg.email}" style="color:#2a5298;">${msg.email}</a></p>
-        <p style="margin:0;"><b style="color:#1e3c72;">Message :</b><br>
-          <span style="color:#333;">${msg.message}</span></p>
+    container.innerHTML = messages.slice().reverse().map((msg) => `
+      <div class="msg-card">
+        <span class="msg-date">${esc(msg.date)}</span>
+        <p style="margin:0 0 4px;"><b style="color:#1e3c72;"><i class="fa-solid fa-user"></i> Nom :</b> ${esc(msg.name)}</p>
+        <p style="margin:0 0 4px;"><b style="color:#1e3c72;"><i class="fa-solid fa-envelope"></i> Email :</b>
+          <a href="mailto:${esc(msg.email)}" style="color:#2a5298;">${esc(msg.email)}</a></p>
+        <p style="margin:0;"><b style="color:#1e3c72;"><i class="fa-solid fa-comment"></i> Message :</b><br>
+          <span style="color:inherit;">${esc(msg.message)}</span></p>
       </div>
     `).join('');
   }
   const clearBtn = document.getElementById('clearMessagesBtn');
-  if (clearBtn) clearBtn.style.display = messages.length ? 'inline-block' : 'none';
-  document.getElementById('messagesModal').style.display = 'block';
+  if (clearBtn) clearBtn.style.display = messages.length ? 'inline-flex' : 'none';
 }
-
-function clearAllMessages() {
+async function clearAllMessages() {
   if (confirm('Supprimer tous les messages stockés ?')) {
-    localStorage.removeItem('portfolio_messages');
+    CONTACT_MESSAGES = [];
+    try{
+      await apiCall("clear_messages", { password: ADMIN_PASSWORD });
+    }catch(e){
+      console.warn("Suppression côté serveur impossible (api.php indisponible).", e);
+    }
     showStoredMessages();
   }
 }
+function closeMessages() { document.getElementById('messagesModal').classList.remove('open'); }
 
-function closeMessages() {
-  document.getElementById('messagesModal').style.display = 'none';
+
+/* ══════════════════════════════════════════════════════════════
+   ADMIN — CONNEXION
+   ══════════════════════════════════════════════════════════════ */
+function openAdminLogin(){
+  document.getElementById('adminLoginError').textContent = '';
+  document.getElementById('adminPasswordInput').value = '';
+  document.getElementById('adminLoginModal').classList.add('open');
+  setTimeout(()=>document.getElementById('adminPasswordInput').focus(), 50);
 }
-</script>
-</p>
-</body>
-</html>      object-fit: cover;
-      border: 4px solid white;
-      box-shadow: 0 0 20px rgba(255,255,255,0.8);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    header img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(255,255,255,1);
-    }
-    .header-text { max-width: 600px; }
-    .header-text h1 { margin: 0; font-size: 2.5em; }
-    .header-text p { margin: 10px 0 0; font-size: 1.2em; }
-    .header-subtitle { font-size: 1.1em; font-weight: bold; margin-top: 5px; color: #ffffffb0; }
-    section { padding: 40px 20px; max-width: 1000px; margin: auto; }
-    h2 {
-      color: #1e3c72;
-      margin-bottom: 20px;
-      border-left: 5px solid #2a5298;
-      padding-left: 10px;
-      transition: all 0.4s;
-    }
-    body.dark-mode h2 { color: #9bb6d4; border-left-color: #5a7fa3; }
-    h2:hover {
-      background-color: #1e3c72;
-      color: #f4f4f4;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      border: 2px solid black;
-    }
-    .skills, .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: all 0.4s ease;
-    }
-    body.dark-mode .card { background: #2a3140; color: #dce3f0; }
-    #c1:hover  { background: violet; color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c2:hover  { background: yellow; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c3:hover  { background: rgb(176,67,67); color: #f4f4f4; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c4:hover  { background: rgb(86,86,202); color: #f4f4f4; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c5:hover  { background: pink; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c6:hover  { background: rgb(116,191,238); transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c7:hover  { background: rgb(115,230,178); transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c8:hover  { background: rgb(249,196,123); transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c9:hover  { background: rgb(13,47,68); color: #f4f4f4; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c10:hover { background: rgb(66,14,50); color: #f4f4f4; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c11:hover { background: rgb(185,231,249); color: #000; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c12:hover { background: rgb(34,139,87); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c12:hover span { color: #fff; }
-    #c12:hover p { color: #e0f5ea; }
-    #c13:hover { background: rgb(74,144,226); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c13:hover p { color: #eaf2fd; }
-    #c14:hover { background: rgb(231,84,128); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c14:hover p { color: #fdeaf1; }
-    #c15:hover { background: rgb(230,126,34); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c15:hover p { color: #fdeee0; }
-    #c16:hover { background: rgb(52,73,94); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c16:hover p { color: #e5e9ec; }
-    #c17:hover { background: rgb(155,89,182); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c17:hover p { color: #f4eaf8; }
-    #c18:hover { background: rgb(214,64,90); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c18:hover p { color: #fde9ec; }
-    footer { background: #1e3c72; color: white; text-align: center; padding: 20px; margin-top: 40px; transition: background 0.4s; }
-    body.dark-mode footer { background: #141e30; }
-    a { color: #ffffff; text-decoration: none; }
-    form { display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: 20px auto; }
-    input, textarea, button { padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em; transition: all 0.3s; }
-    input:focus, textarea:focus { border-color: #2a5298; outline: none; }
-    button { background: #1e3c72; color: white; cursor: pointer; border: none; }
-    body.dark-mode button { background: #ccc; }
-    button:hover { background: #2a5298; }
-    .toggle-btn {
-      position: fixed; top: 20px; right: 20px;
-      background: #1e3c72; color: white; border: none;
-      border-radius: 20px; padding: 10px 20px; cursor: pointer; transition: background 0.3s;
-      z-index: 1000;
-    }
-    .toggle-btn:hover { background: #2a5298; }
-    .pdf-btn {
-      position: fixed; top: 20px; left: 20px;
-      background: #28a745; color: white; border: none;
-      border-radius: 20px; padding: 10px 20px; cursor: pointer; transition: background 0.3s;
-      z-index: 1000; font-size: 0.9em;
-    }
-    .pdf-btn:hover { background: #218838; }
-    .mess-btn {
-      position: fixed; top: 70px; left: 20px;
-      background: #007bff; color: white; border: none;
-      border-radius: 20px; padding: 10px 20px; cursor: pointer; transition: background 0.3s;
-      z-index: 1000; font-size: 0.9em;
-    }
-    .mess-btn:hover { background: #0069d9; }
-    .status-message {
-      position: fixed; top: 80px; right: 20px;
-      padding: 15px 20px; border-radius: 10px; color: white;
-      font-weight: bold; z-index: 1001; opacity: 0;
-      transition: opacity 0.3s, transform 0.3s;
-      transform: translateY(-20px);
-    }
-    .status-message.show { opacity: 1; transform: translateY(0); }
-    .status-message.success { background: #28a745; }
-    .status-message.error   { background: #dc3545; }
-    .status-message.info    { background: #17a2b8; }
-    @media (max-width: 768px) {
-      header { flex-direction: column; text-align: center; gap: 15px; padding: 30px 10px; }
-      header img { width: 120px; height: 120px; }
-      .header-text h1 { font-size: 2em; }
-      .header-text p  { font-size: 1em; }
-      section { padding: 30px 15px; }
-      .skills, .projects { grid-template-columns: 1fr; }
-      .pdf-btn, .toggle-btn, .mess-btn { position: static; margin: 10px; display: inline-block; }
-    }
-    @media (max-width: 480px) {
-      header img { width: 100px; height: 100px; }
-      .header-text h1 { font-size: 1.5em; }
-      .header-text p  { font-size: 0.9em; }
-      button.toggle-btn, .pdf-btn, .mess-btn { padding: 8px 15px; font-size: 0.9em; }
-      form { width: 90%; margin: 15px auto; }
-      input, textarea, button { font-size: 0.9em; padding: 8px; }
-      h2 { font-size: 1.3em; }
-      .card { padding: 15px; }
-      footer { font-size: 0.9em; padding: 15px; }
-    }
-    #l1:hover { background: rgb(116,191,238); color:#fff; transform:translateY(-5px); box-shadow:0 8px 15px rgba(0,0,0,0.2); }
-    #l2:hover { background: rgb(115,230,178); color:#fff; transform:translateY(-5px); box-shadow:0 8px 15px rgba(0,0,0,0.2); }
-    #l3:hover { background: rgb(249,196,123); color:#fff; transform:translateY(-5px); box-shadow:0 8px 15px rgba(0,0,0,0.2); }
-    span { color: #ffffff; }
-    .info-badge {
-      display: inline-block; background: #437d9157;
-      padding: 5px 12px; border-radius: 15px; border: #ffffff solid 2px;
-      margin: 5px; font-size: 0.9em;
-    }
-    body.dark-mode .info-badge { background: #2a3f5f; }
-    .projects span { color: #1e3c72; }
-    section ul span { color: #1e3c72; }
+function closeAdminLogin(){ document.getElementById('adminLoginModal').classList.remove('open'); }
 
-    /* Card projet cliquable */
-    .projects a {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-    .projects a .card {
-      cursor: pointer;
-      position: relative;
-    }
-    .projects a .card::after {
-      content: "↗";
-      position: absolute;
-      top: 12px;
-      right: 14px;
-      font-size: 1em;
-      color: #2a5298;
-      opacity: 0.5;
-      transition: opacity 0.3s;
-    }
-    .projects a .card:hover::after {
-      opacity: 1;
-      color: #fff;
-    }
-  </style>
-
-  <!-- jsPDF -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <!-- EmailJS -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>emailjs.init('IOBd0ZMe9qySPX_6X');</script>
-</head>
-<body>
-<p><button class="pdf-btn" onclick="generatePDF()">📄 Télécharger CV PDF</button> <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Mode sombre</button> <button class="mess-btn" onclick="showStoredMessages()">📥 Voir les messages reçus</button></p>
-<div id="statusMessage" class="status-message"></div>
-<div id="portfolioContent"><header><img src="3.png" alt="Photo de profil" />
-<div class="header-text">
-<h1>Zanga Cheick Omar DIOURTE</h1>
-<div class="header-subtitle">TECHNICIEN SUPÉRIEUR INFORMATIQUE - DÉVELOPPEUR D'APPLICATION</div>
-<p><span class="info-badge">🇨🇮 Ivoirien</span> <span class="info-badge">19 ans</span></p>
-<p>📍 Bingerville, Abidjan – Côte d'Ivoire  |  📱 <a href="tel:+22505848764 67">+225 05 84 87 64 67</a>  |  ✉️ <a href="mailto:diourtecheick@gmail.com">diourtecheick@gmail.com</a>  |  <a href="https://www.linkedin.com/in/zanga-cheick-omar-diourte-81a458221" target="_blank" rel="noopener">LinkedIn</a></p>
-</div>
-</header>
-<section>
-<h2>À propos de moi</h2>
-<p>Je suis passionné par le développement et les technologies numériques. Rigoureux, créatif et toujours motivé, je cherche à contribuer à des projets innovants tout en renforçant mes compétences techniques.</p>
-</section>
-<section>
-<h2>Diplômes &amp; Certifications </h2>
-<ul>
-<li><b>Juillet 2026 :</b> CERTIFICATION AI FOR ALL – Microsoft Learn / MTN Skills Academy</li>
-<li><b>Juillet 2026 :</b> CERTIFICATION INTERNET FUNDAMENTALS – GSMA / MTN Skills Academy</li>
-<li><b>2025 - 2026 :</b> LICENCE 3 INFORMATIQUE GÉNIE LOGICIEL – Atlantique International Business School (AIBS), Cocody Danga</li>
-<li><b>2024 – 2025 :</b> BTS Informatique Développeur d'Applications – Institut International Polytechnique des Elites d'Abidjan (IIPEA), Cocody Riviera-2</li>
-<li><b>2022 – 2023 :</b> Baccalauréat série D – Lycée Garçons de Bingerville</li>
-<li><b>2020 – 2022 :</b> Certificate "English Access Microscholarship" – Ambassade des États-Unis (en CI)</li>
-<li><b>2019 – 2020 :</b> BEPC – Lycée Garçons de Bingerville</li>
-</ul>
-</section>
-<section>
-<h2>Domaines de Compétences</h2>
-<div class="skills">
-<div class="card" id="c1">💻 Développement web : HTML, CSS, JavaScript, PHP</div>
-<div class="card" id="c2">⚙️ Programmation : Python, Java, Algorithmique</div>
-<div class="card" id="c3">🗄️ Bases de données : MySQL</div>
-<div class="card" id="c4">🖥️ Bureautique : Word, Excel, PowerPoint, Internet</div>
-<div class="card" id="c10">📡 Réseau informatique</div>
-<div class="card" id="c9">🧩 Systèmes d'exploitation</div>
-<div class="card" id="c5">🌐 Création de sites web dynamiques et responsives</div>
-</div>
-</section>
-<section>
-<h2>Expériences Professionnelles</h2>
-<ul>
-<li><b>Nov. 2025 – Fév. 2026 :</b> Stage de soutenance – NOVASYS CI<br /><span>Thème : DÉVELOPPEMENT D'UN SYSTÈME D'AUTOMATISATION DE GESTION DES CONGÉS ET ABSENCES</span></li>
-<li><b>Août 2024 – Sept. 2024 :</b> Stage d'immersion professionnelle – NOVASYS CI<br /><span>Projet : VOYAGES HUB – CRÉATION D'UN SITE WEB POUR L'ACHAT EN LIGNE DES TICKETS DE CAR VOYAGEURS</span></li>
-<li><b>Assistant gérant – Cyber café</b><br /><span>Gestion technique des postes et support client</span></li>
-</ul>
-</section>
-<section>
-<h2>Projets</h2>
-<div class="projects">
-<a href="https://conge-online.infinityfreeapp.com" target="_blank" rel="noopener">
-<div class="card" id="c6">
-<h3>🌐 Applications WEB</h3>
-<p>Projet HTML5/CSS3, PHP, MySQL, FPDF. Application web intuitive visant à faciliter les demandes et justifications de congés et absences en entreprise.</p>
-<p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 conge-online.infinityfreeapp.com</p>
-</div>
-</a>
-<a href="https://voyages-hub.ifree.page/" target="_blank" rel="noopener">
-
-<div class="card" id="c11">
-<h3>🧭 Site web (<span>VOYAGES-HUB</span>)</h3>
-<p>Projet HTML5/CSS3 de vente de tickets de car de voyages en ligne. <br /><br /><br /><br /></p>
-    <p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 https://voyages-hub.ifree.page/</p>
-
-</div>
-</a>
-<div class="card" id="c7">
-<h3>📊 Application de gestion</h3>
-<p>Développement d'une mini-application en Python avec gestion de fichiers.</p>
-</div>
-<div class="card" id="c8">
-<h3>📝 Blog dynamique</h3>
-<p>Projet PHP/MySQL permettant la publication d'articles en ligne.</p>
-</div>
-<div class="card" id="c15">
-<h3>🥤 Gestion de distributeur de soda</h3>
-<p>Application console en Java simulant la gestion d'un distributeur automatique de boissons (stock, paiement, rendu de monnaie).</p>
-</div>
-<div class="card" id="c16">
-<h3>🏦 Simulation de système bancaire</h3>
-<p>Application console en Java simulant un système bancaire : gestion de comptes, dépôts, retraits et transactions.</p>
-</div>
-<a href="https://ma-bibliotheque.freepage.cc/?i=1#/" target="_blank" rel="noopener">
-<div class="card" id="c17">
-<h3>📚 Ma Bibliothèque</h3>
-<p>Plateforme web recensant la plupart de mes écrits : réflexions, textes personnels et créations.</p>
-<p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 ma-bibliotheque.freepage.cc</p>
-</div>
-</a>
-<a href="https://joyeusefetedespere.infinityfree.me/" target="_blank" rel="noopener">
-<div class="card" id="c13">
-<h3>👨‍👧 Joyeuse Fête des Pères</h3>
-<p>Site web HTML5/CSS3 célébrant la fête des pères, avec une mise en page festive et responsive.</p>
-<p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 joyeusefetedespere.infinityfree.me</p>
-</div>
-</a>
-<a href="https://happy-mothers-day.infinityfreeapp.com" target="_blank" rel="noopener">
-<div class="card" id="c14">
-<h3>👩‍👧 Happy Mother's Day</h3>
-<p>Site web HTML5/CSS3 dédié à la fête des mères, conçu avec une interface soignée et responsive.</p>
-<p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 happy-mothers-day.infinityfreeapp.com</p>
-</div>
-</a>
-<a href="https://eagle-leadership-academie.page.gd" target="_blank" rel="noopener">
-<div class="card" id="c12">
-<h3>🏫 Gestion des inscriptions scolaires</h3>
-<p>Application web de gestion des inscriptions pour <span>Eagle Leadership Académie</span>. Interface permettant la saisie, le suivi et la validation des dossiers d'élèves.</p>
-<p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 eagle-leadership-academie.page.gd</p>
-</div>
-</a>
-<a href="https://eyes-on-you.freedev.app/connexion.php" target="_blank" rel="noopener">
-<div class="card" id="c18">
-<h3>📍 Eyes On You</h3>
-<p>Site web de localisation et de rencontre basé sur la position géographique et la proximité, avec un système de chat intégré.</p>
-<p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 eyes-on-you.freedev.app</p>
-</div>
-</a>
-</div>
-</section>
-<section>
-<h2>Langues</h2>
-<div class="projects">
-<div class="card" id="l1">
-<h3>🇫🇷 Français</h3>
-<p>⭐⭐⭐⭐⭐</p>
-</div>
-<div class="card" id="l2">
-<h3>🇬🇧 Anglais</h3>
-<p>⭐⭐⭐⭐☆</p>
-</div>
-<div class="card" id="l3">
-<h3>🇩🇪 Allemand</h3>
-<p>⭐⭐⭐☆☆</p>
-</div>
-</div>
-</section>
-<section>
-<h2>Autres Atouts</h2>
-<ul>
-<li>✨ Dynamique</li>
-<li>🎨 Créatif</li>
-<li>⏰ Ponctuel</li>
-<li>📐 Rigoureux</li>
-<li>🤝 Serviable</li>
-<li>🚗 Permis de conduire AB (en cours)</li>
-</ul>
-</section>
-<section>
-<h2>Engagement &amp; Leadership</h2>
-<ul>
-<li>🌟 Membre fondateur de l'ONG LEADER'S HEART</li>
-<li>📢 Responsable communication de l'ONG LEADER'S HEART</li>
-<li>🎤 Président du club de débat contradictoire au Lycée Garçons, Bingerville</li>
-</ul>
-</section>
-<section>
-<h2>Centres d'Intérêt</h2>
-<p>📚 Développement personnel &amp; lecture | ✍️ Écriture | ⚽ Sport | 💚 Bénévolat et actions communautaires</p>
-</section>
-<section>
-<h2>Contact</h2>
-<form id="contactForm" onsubmit="sendEmail(event)"><input type="text" id="name" placeholder="Votre nom" required="" /> <input type="email" id="email" placeholder="Votre email" required="" /> <textarea rows="5" id="message" placeholder="Votre message" required=""></textarea> <button type="submit">Envoyer</button></form></section>
-<footer>
-<p>© 2025 - Portfolio de Zanga Cheick Omar DIOURTE</p>
-</footer></div>
-<!-- Modal messages -->
-<div id="messagesModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); padding: 40px; z-index: 2000; overflow: auto;">
-<div style="background: white; padding: 20px; max-width: 600px; margin: auto; border-radius: 10px; color: #333;">
-<h2>📨 Messages reçus</h2>
-<div id="messagesList"></div>
-<div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;"><button onclick="closeMessages()" style="background: #1e3c72; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Fermer</button> <button id="clearMessagesBtn" onclick="clearAllMessages()" style="display: none; background: #dc3545; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">🗑️ Vider les messages</button></div>
-</div>
-</div>
-<p>
-<script>
-// ─── DARK MODE ───────────────────────────────────────────────
-function toggleDarkMode() {
-  document.body.classList.toggle("dark-mode");
-  const btn = document.querySelector('.toggle-btn');
-  btn.textContent = document.body.classList.contains('dark-mode') ? '☀️ Mode clair' : '🌙 Mode sombre';
-}
-
-// ─── NOTIFICATION ────────────────────────────────────────────
-function showMessage(message, type = 'info') {
-  const d = document.getElementById('statusMessage');
-  d.textContent = message;
-  d.className = `status-message ${type} show`;
-  setTimeout(() => d.classList.remove('show'), 4000);
-}
-
-// ═════════════════════════════════════════════════════════════
-//  GÉNÉRATION PDF — mode texte pur (net comme un Word)
-// ═════════════════════════════════════════════════════════════
-function generatePDF() {
-  showMessage('Génération du PDF...', 'info');
-
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
-
-  const PW = 210, PH = 297;
-  const ML = 15, MR = 15, MT = 0;
-  const CW = PW - ML - MR;
-  let y = MT;
-
-  const NAVY  = [30, 60, 114];
-  const BLUE  = [42, 82, 152];
-  const WHITE = [255, 255, 255];
-  const LGRAY = [240, 244, 250];
-  const DGRAY = [80, 80, 80];
-  const BLACK = [30, 30, 30];
-
-  const setFont = (style = 'normal', size = 10, color = BLACK) => {
-    doc.setFont('helvetica', style);
-    doc.setFontSize(size);
-    doc.setTextColor(...color);
-  };
-
-  const rect = (x, yy, w, h, color, radius = 0) => {
-    doc.setFillColor(...color);
-    if (radius) doc.roundedRect(x, yy, w, h, radius, radius, 'F');
-    else        doc.rect(x, yy, w, h, 'F');
-  };
-
-  const line = (x1, yy, x2, color = NAVY, thickness = 0.3) => {
-    doc.setDrawColor(...color);
-    doc.setLineWidth(thickness);
-    doc.line(x1, yy, x2, yy);
-  };
-
-  const checkPage = (needed = 10) => {
-    if (y + needed > PH - 10) { doc.addPage(); y = 15; }
-  };
-
-  const sectionTitle = (title) => {
-    checkPage(14);
-    rect(0, y, PW, 8, NAVY);
-    setFont('bold', 10, WHITE);
-    doc.text(title.toUpperCase(), ML, y + 5.5);
-    y += 12;
-  };
-
-  const expItem = (period, role, detail) => {
-    checkPage(18);
-    setFont('bold', 9, NAVY);
-    doc.text(period, ML + 4, y);
-    y += 5;
-    setFont('bold', 9.5, BLUE);
-    const rLines = doc.splitTextToSize(role, CW - 4);
-    doc.text(rLines, ML + 4, y);
-    y += rLines.length * 5;
-    setFont('normal', 8.5, DGRAY);
-    const dLines = doc.splitTextToSize(detail, CW - 8);
-    doc.text(dLines, ML + 8, y);
-    y += dLines.length * 4.5 + 4;
-  };
-
-  const skillBadge = (txt, x, yy, w) => {
-    rect(x, yy - 4, w, 6.5, LGRAY, 1.5);
-    setFont('normal', 8, NAVY);
-    doc.text(txt, x + w / 2, yy, { align: 'center' });
-  };
-
-  const langBar = (langue, niveau, maxLvl = 5) => {
-    checkPage(8);
-    setFont('bold', 9, BLACK);
-    doc.text(langue, ML + 4, y);
-    const barX = ML + 50;
-    const barW = 8, barH = 3, gap = 2;
-    for (let i = 0; i < maxLvl; i++) {
-      const filled = i < niveau;
-      doc.setFillColor(...(filled ? NAVY : [200, 210, 225]));
-      doc.roundedRect(barX + i * (barW + gap), y - 3, barW, barH, 0.8, 0.8, 'F');
-    }
-    setFont('normal', 8, DGRAY);
-    const labels = ['Notions','Elémentaire','Intermédiaire','Avancé','Courant/Bilingue'];
-    doc.text(labels[niveau - 1] || '', barX + maxLvl * (barW + gap) + 2, y);
-    y += 7;
-  };
-
-  // EN-TÊTE
-  rect(0, 0, PW, 42, NAVY);
-  setFont('bold', 20, WHITE);
-  doc.text('Zanga Cheick Omar DIOURTE', ML, 13);
-  line(ML, 16, PW - MR, [255,255,255,0.4], 0.3);
-  setFont('bold', 10, [180, 210, 240]);
-  doc.text('TECHNICIEN SUPERIEUR INFORMATIQUE  —  DEVELOPPEUR D\'APPLICATION', ML, 22);
-  setFont('normal', 8.5, [220, 235, 255]);
-  doc.text('Bingerville, Abidjan – Cote d\'Ivoire', ML, 29);
-  doc.text('+225 05 84 87 64 67', ML, 34);
-  doc.text('diourtecheick@gmail.com', ML + 55, 34);
-  doc.text('linkedin.com/in/zanga-cheick-omar-diourte-81a458221', ML, 39);
-  setFont('normal', 8, [180, 210, 240]);
-  doc.text('Ivoirien  |  19 ans', PW - MR - 30, 34, { align: 'right' });
-  y = 50;
-
-  // À PROPOS
-  sectionTitle('A propos de moi');
-  setFont('normal', 9, BLACK);
-  const aboutLines = doc.splitTextToSize(
-    'Passionne par le developpement et les technologies numeriques. Rigoureux, creatif et toujours motive, je cherche a contribuer a des projets innovants tout en renforcant mes competences techniques.',
-    CW
-  );
-  doc.text(aboutLines, ML, y);
-  y += aboutLines.length * 5 + 4;
-
-  // FORMATION
-  sectionTitle('Formation & Diplomes');
-  const formations = [
-    ['2025',          'Licence 3 Informatique Genie Logiciel', 'AIBS – Atlantique International Business School, Cocody Danga'],
-    ['2024 – 2025',   'BTS Informatique – Developpeur d\'Applications', 'IIPEA – Institut International Polytechnique des Elites d\'Abidjan, Riviera-2'],
-    ['2022 – 2023',   'Baccalaureat serie D', 'Lycee Garcons de Bingerville'],
-    ['2020 – 2022',   'Certificate "English Access Microscholarship"', 'Ambassade des Etats-Unis en Cote d\'Ivoire'],
-    ['2019 – 2020',   'BEPC', 'Lycee Garcons de Bingerville'],
-  ];
-  for (const [year, diploma, school] of formations) {
-    checkPage(14);
-    rect(ML, y - 4, 28, 6, LGRAY, 1);
-    setFont('bold', 8, NAVY);
-    doc.text(year, ML + 14, y, { align: 'center' });
-    setFont('bold', 9, BLACK);
-    const dLines = doc.splitTextToSize(diploma, CW - 34);
-    doc.text(dLines, ML + 32, y);
-    setFont('normal', 8, DGRAY);
-    const sLines = doc.splitTextToSize(school, CW - 34);
-    doc.text(sLines, ML + 32, y + dLines.length * 5);
-    y += dLines.length * 5 + sLines.length * 4.5 + 4;
-  }
-
-  // COMPÉTENCES
-  sectionTitle('Competences Techniques');
-  const skills = [
-    'HTML · CSS · JavaScript · PHP',
-    'Python · Java · Algorithmique',
-    'MySQL',
-    'Word · Excel · PowerPoint',
-    'Reseaux informatiques',
-    'Systemes d\'exploitation',
-    'Sites web dynamiques & responsives',
-  ];
-  const bW = (CW - 10) / 3 - 2;
-  let bX = ML;
-  for (let i = 0; i < skills.length; i++) {
-    checkPage(10);
-    skillBadge(skills[i], bX, y, bW);
-    bX += bW + 4;
-    if ((i + 1) % 3 === 0 || i === skills.length - 1) { bX = ML; y += 9; }
-  }
-  y += 4;
-
-  // EXPÉRIENCES
-  sectionTitle('Experiences Professionnelles');
-  expItem('Nov. 2025 – Fev. 2026', 'Stage de soutenance – NOVASYS CI',
-    'Developpement d\'un systeme d\'automatisation de gestion des conges et absences.');
-  expItem('Aout 2024 – Sept. 2024', 'Stage d\'immersion professionnelle – NOVASYS CI',
-    'VOYAGES HUB : creation d\'un site web pour l\'achat en ligne de tickets de car voyageurs.');
-  expItem('Poste anterieur', 'Assistant gerant – Cyber cafe',
-    'Gestion technique des postes informatiques et support client.');
-
-  // PROJETS
-  sectionTitle('Projets');
-  const projects = [
-    ['Application WEB – Gestion des conges/absences',
-     'HTML5, CSS3, PHP, MySQL, FPDF. Application intuitive de gestion des demandes de conges et absences en entreprise.'],
-    ['VOYAGES-HUB – Site de vente de tickets',
-     'HTML5, CSS3. Site web de vente en ligne de tickets de car de voyages.'],
-    ['Application de gestion (Python)',
-     'Mini-application Python avec gestion de fichiers et de donnees.'],
-    ['Blog dynamique',
-     'Projet PHP/MySQL de publication et gestion d\'articles en ligne.'],
-    ['Ma Bibliotheque – Recueil d\'ecrits personnels',
-     'Plateforme web recensant la plupart de mes ecrits : reflexions, textes personnels et creations. (ma-bibliotheque.freepage.cc)'],
-    ['Gestion des inscriptions scolaires – Eagle Leadership Academie',
-     'Application web de gestion des inscriptions scolaires. Interface de saisie, suivi et validation des dossiers d\'eleves. (eagle-leadership-academie.page.gd)'],
-    ['Eyes On You – Localisation & rencontre',
-     'Site web de localisation et de rencontre base sur la position geographique et la proximite, avec chat integre. (eyes-on-you.freedev.app)'],
-  ];
-  for (const [title, desc] of projects) {
-    checkPage(14);
-    setFont('bold', 9, NAVY);
-    doc.text('• ' + title, ML, y);
-    y += 5;
-    setFont('normal', 8.5, DGRAY);
-    const dl = doc.splitTextToSize(desc, CW - 8);
-    doc.text(dl, ML + 6, y);
-    y += dl.length * 4.5 + 3;
-  }
-
-  // LANGUES
-  checkPage(35);
-  sectionTitle('Langues');
-  langBar('Francais',  5);
-  langBar('Anglais',   4);
-  langBar('Allemand',  3);
-  y += 2;
-
-  // ENGAGEMENT
-  sectionTitle('Engagement & Leadership');
-  const engagements = [
-    'Membre fondateur – ONG LEADER\'S HEART',
-    'Responsable communication – ONG LEADER\'S HEART',
-    'President du club de debat contradictoire – Lycee Garcons, Bingerville',
-  ];
-  for (const e of engagements) {
-    checkPage(7);
-    setFont('normal', 9, BLACK);
-    doc.text('• ' + e, ML, y);
-    y += 5.5;
-  }
-  y += 2;
-
-  // ATOUTS
-  sectionTitle('Atouts & Qualites');
-  const atouts = ['Dynamique', 'Creatif', 'Ponctuel', 'Rigoureux', 'Serviable', 'Permis AB (en cours)'];
-  const aW = (CW - 10) / 3 - 2;
-  let aX = ML;
-  for (let i = 0; i < atouts.length; i++) {
-    checkPage(10);
-    skillBadge(atouts[i], aX, y, aW);
-    aX += aW + 4;
-    if ((i + 1) % 3 === 0 || i === atouts.length - 1) { aX = ML; y += 9; }
-  }
-  y += 2;
-
-  // CENTRES D'INTÉRÊT
-  sectionTitle('Centres d\'interet');
-  const interests = ['Developpement personnel & lecture', 'Ecriture creative', 'Sport', 'Benevolat & actions communautaires'];
-  setFont('normal', 9, BLACK);
-  doc.text(interests.join('   |   '), ML, y);
-  y += 6;
-
-  // PIED DE PAGE
-  const pageCount = doc.internal.getNumberOfPages();
-  for (let p = 1; p <= pageCount; p++) {
-    doc.setPage(p);
-    rect(0, PH - 8, PW, 8, NAVY);
-    setFont('normal', 7.5, WHITE);
-    doc.text('© 2025 — Zanga Cheick Omar DIOURTE  |  diourtecheick@gmail.com  |  +225 05 84 87 64 67', PW / 2, PH - 3, { align: 'center' });
-    if (pageCount > 1) {
-      setFont('normal', 7.5, WHITE);
-      doc.text(`Page ${p} / ${pageCount}`, PW - MR, PH - 3, { align: 'right' });
-    }
-  }
-
-  doc.save('CV_Zanga_Cheick_Omar_DIOURTE.pdf');
-  showMessage('CV telecharge avec succes !', 'success');
-}
-
-// ─── CONTACT — EmailJS + localStorage ────────────────────────
-async function sendEmail(event) {
-  event.preventDefault();
-  const name    = document.getElementById('name').value.trim();
-  const email   = document.getElementById('email').value.trim();
-  const message = document.getElementById('message').value.trim();
-  const btn     = document.querySelector('#contactForm button[type="submit"]');
-  btn.disabled    = true;
-  btn.textContent = '⏳ Envoi en cours...';
-  showMessage('Envoi en cours...', 'info');
-  try {
-    await emailjs.send('service_r8q8jll', 'template_zwn7h0d', {
-      from_name  : name,
-      from_email : email,
-      message    : message,
-      reply_to   : email,
-    });
-    const stored = JSON.parse(localStorage.getItem('portfolio_messages') || '[]');
-    stored.push({ name, email, message, date: new Date().toLocaleString('fr-FR') });
-    localStorage.setItem('portfolio_messages', JSON.stringify(stored));
-    showMessage('✅ Message envoyé avec succès !', 'success');
-    document.getElementById('contactForm').reset();
-  } catch (err) {
-    console.error('EmailJS error:', err);
-    showMessage('❌ Echec de l\'envoi. Vérifiez votre connexion.', 'error');
-  } finally {
-    btn.disabled    = false;
-    btn.textContent = 'Envoyer';
-  }
-}
-
-function showStoredMessages() {
-  const messages  = JSON.parse(localStorage.getItem('portfolio_messages') || '[]');
-  const container = document.getElementById('messagesList');
-  if (messages.length === 0) {
-    container.innerHTML = '<p style="color:#666;">Aucun message reçu pour le moment.</p>';
+function attemptAdminLogin(){
+  const val = document.getElementById('adminPasswordInput').value;
+  if (val === ADMIN_PASSWORD){
+    isAdminLoggedIn = true;
+    closeAdminLogin();
+    openAdmin();
   } else {
-    container.innerHTML = messages.slice().reverse().map((msg, i) => `
-      <div style="border:1px solid #ddd; padding:12px; margin-bottom:12px; border-radius:8px; background:#f9f9f9; position:relative;">
-        <span style="position:absolute;top:8px;right:10px;font-size:0.75em;color:#999;">${msg.date}</span>
-        <p style="margin:0 0 4px;"><b style="color:#1e3c72;">Nom :</b> ${msg.name}</p>
-        <p style="margin:0 0 4px;"><b style="color:#1e3c72;">Email :</b>
-          <a href="mailto:${msg.email}" style="color:#2a5298;">${msg.email}</a></p>
-        <p style="margin:0;"><b style="color:#1e3c72;">Message :</b><br>
-          <span style="color:#333;">${msg.message}</span></p>
-      </div>
-    `).join('');
-  }
-  const clearBtn = document.getElementById('clearMessagesBtn');
-  if (clearBtn) clearBtn.style.display = messages.length ? 'inline-block' : 'none';
-  document.getElementById('messagesModal').style.display = 'block';
-}
-
-function clearAllMessages() {
-  if (confirm('Supprimer tous les messages stockés ?')) {
-    localStorage.removeItem('portfolio_messages');
-    showStoredMessages();
+    document.getElementById('adminLoginError').textContent = 'Mot de passe incorrect.';
   }
 }
-
-function closeMessages() {
-  document.getElementById('messagesModal').style.display = 'none';
+function adminLogout(){
+  isAdminLoggedIn = false;
+  closeAdmin();
+  showMessage('Déconnecté de l\'espace admin.', 'info');
 }
-</script>
-</p>
-</body>
-</html>      object-fit: cover;
-      border: 4px solid white;
-      box-shadow: 0 0 20px rgba(255,255,255,0.8);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    header img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(255,255,255,1);
-    }
-    .header-text { max-width: 600px; }
-    .header-text h1 { margin: 0; font-size: 2.5em; }
-    .header-text p { margin: 10px 0 0; font-size: 1.2em; }
-    .header-subtitle { font-size: 1.1em; font-weight: bold; margin-top: 5px; color: #ffffffb0; }
-    section { padding: 40px 20px; max-width: 1000px; margin: auto; }
-    h2 {
-      color: #1e3c72;
-      margin-bottom: 20px;
-      border-left: 5px solid #2a5298;
-      padding-left: 10px;
-      transition: all 0.4s;
-    }
-    body.dark-mode h2 { color: #9bb6d4; border-left-color: #5a7fa3; }
-    h2:hover {
-      background-color: #1e3c72;
-      color: #f4f4f4;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      border: 2px solid black;
-    }
-    .skills, .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: all 0.4s ease;
-    }
-    body.dark-mode .card { background: #2a3140; color: #dce3f0; }
-    #c1:hover  { background: violet; color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c2:hover  { background: yellow; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c3:hover  { background: rgb(176,67,67); color: #f4f4f4; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c4:hover  { background: rgb(86,86,202); color: #f4f4f4; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c5:hover  { background: pink; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c6:hover  { background: rgb(116,191,238); transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c7:hover  { background: rgb(115,230,178); transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c8:hover  { background: rgb(249,196,123); transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c9:hover  { background: rgb(13,47,68); color: #f4f4f4; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c10:hover { background: rgb(66,14,50); color: #f4f4f4; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c11:hover { background: rgb(185,231,249); color: #000; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c12:hover { background: rgb(34,139,87); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c12:hover span { color: #fff; }
-    #c12:hover p { color: #e0f5ea; }
-    #c13:hover { background: rgb(74,144,226); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c13:hover p { color: #eaf2fd; }
-    #c14:hover { background: rgb(231,84,128); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c14:hover p { color: #fdeaf1; }
-    #c15:hover { background: rgb(230,126,34); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c15:hover p { color: #fdeee0; }
-    #c16:hover { background: rgb(52,73,94); color: #fff; transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-    #c16:hover p { color: #e5e9ec; }
-    footer { background: #1e3c72; color: white; text-align: center; padding: 20px; margin-top: 40px; transition: background 0.4s; }
-    body.dark-mode footer { background: #141e30; }
-    a { color: #ffffff; text-decoration: none; }
-    form { display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: 20px auto; }
-    input, textarea, button { padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em; transition: all 0.3s; }
-    input:focus, textarea:focus { border-color: #2a5298; outline: none; }
-    button { background: #1e3c72; color: white; cursor: pointer; border: none; }
-    body.dark-mode button { background: #ccc; }
-    button:hover { background: #2a5298; }
-    .toggle-btn {
-      position: fixed; top: 20px; right: 20px;
-      background: #1e3c72; color: white; border: none;
-      border-radius: 20px; padding: 10px 20px; cursor: pointer; transition: background 0.3s;
-      z-index: 1000;
-    }
-    .toggle-btn:hover { background: #2a5298; }
-    .pdf-btn {
-      position: fixed; top: 20px; left: 20px;
-      background: #28a745; color: white; border: none;
-      border-radius: 20px; padding: 10px 20px; cursor: pointer; transition: background 0.3s;
-      z-index: 1000; font-size: 0.9em;
-    }
-    .pdf-btn:hover { background: #218838; }
-    .mess-btn {
-      position: fixed; top: 70px; left: 20px;
-      background: #007bff; color: white; border: none;
-      border-radius: 20px; padding: 10px 20px; cursor: pointer; transition: background 0.3s;
-      z-index: 1000; font-size: 0.9em;
-    }
-    .mess-btn:hover { background: #0069d9; }
-    .status-message {
-      position: fixed; top: 80px; right: 20px;
-      padding: 15px 20px; border-radius: 10px; color: white;
-      font-weight: bold; z-index: 1001; opacity: 0;
-      transition: opacity 0.3s, transform 0.3s;
-      transform: translateY(-20px);
-    }
-    .status-message.show { opacity: 1; transform: translateY(0); }
-    .status-message.success { background: #28a745; }
-    .status-message.error   { background: #dc3545; }
-    .status-message.info    { background: #17a2b8; }
-    @media (max-width: 768px) {
-      header { flex-direction: column; text-align: center; gap: 15px; padding: 30px 10px; }
-      header img { width: 120px; height: 120px; }
-      .header-text h1 { font-size: 2em; }
-      .header-text p  { font-size: 1em; }
-      section { padding: 30px 15px; }
-      .skills, .projects { grid-template-columns: 1fr; }
-      .pdf-btn, .toggle-btn, .mess-btn { position: static; margin: 10px; display: inline-block; }
-    }
-    @media (max-width: 480px) {
-      header img { width: 100px; height: 100px; }
-      .header-text h1 { font-size: 1.5em; }
-      .header-text p  { font-size: 0.9em; }
-      button.toggle-btn, .pdf-btn, .mess-btn { padding: 8px 15px; font-size: 0.9em; }
-      form { width: 90%; margin: 15px auto; }
-      input, textarea, button { font-size: 0.9em; padding: 8px; }
-      h2 { font-size: 1.3em; }
-      .card { padding: 15px; }
-      footer { font-size: 0.9em; padding: 15px; }
-    }
-    #l1:hover { background: rgb(116,191,238); color:#fff; transform:translateY(-5px); box-shadow:0 8px 15px rgba(0,0,0,0.2); }
-    #l2:hover { background: rgb(115,230,178); color:#fff; transform:translateY(-5px); box-shadow:0 8px 15px rgba(0,0,0,0.2); }
-    #l3:hover { background: rgb(249,196,123); color:#fff; transform:translateY(-5px); box-shadow:0 8px 15px rgba(0,0,0,0.2); }
-    span { color: #ffffff; }
-    .info-badge {
-      display: inline-block; background: #437d9157;
-      padding: 5px 12px; border-radius: 15px; border: #ffffff solid 2px;
-      margin: 5px; font-size: 0.9em;
-    }
-    body.dark-mode .info-badge { background: #2a3f5f; }
-    .projects span { color: #1e3c72; }
-    section ul span { color: #1e3c72; }
-
-    /* Card projet cliquable */
-    .projects a {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-    .projects a .card {
-      cursor: pointer;
-      position: relative;
-    }
-    .projects a .card::after {
-      content: "↗";
-      position: absolute;
-      top: 12px;
-      right: 14px;
-      font-size: 1em;
-      color: #2a5298;
-      opacity: 0.5;
-      transition: opacity 0.3s;
-    }
-    .projects a .card:hover::after {
-      opacity: 1;
-      color: #fff;
-    }
-  </style>
-
-  <!-- jsPDF -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <!-- EmailJS -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>emailjs.init('IOBd0ZMe9qySPX_6X');</script>
-</head>
-<body>
-<p><button class="pdf-btn" onclick="generatePDF()">📄 Télécharger CV PDF</button> <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Mode sombre</button> <button class="mess-btn" onclick="showStoredMessages()">📥 Voir les messages reçus</button></p>
-<div id="statusMessage" class="status-message"></div>
-<div id="portfolioContent"><header><img src="3.png" alt="Photo de profil" />
-<div class="header-text">
-<h1>Zanga Cheick Omar DIOURTE</h1>
-<div class="header-subtitle">TECHNICIEN SUPÉRIEUR INFORMATIQUE - DÉVELOPPEUR D'APPLICATION</div>
-<p><span class="info-badge">🇨🇮 Ivoirien</span> <span class="info-badge">19 ans</span></p>
-<p>📍 Bingerville, Abidjan – Côte d'Ivoire  |  📱 <a href="tel:+22505848764 67">+225 05 84 87 64 67</a>  |  ✉️ <a href="mailto:diourtecheick@gmail.com">diourtecheick@gmail.com</a>  |  <a href="https://www.linkedin.com/in/zanga-cheick-omar-diourte-81a458221" target="_blank" rel="noopener">LinkedIn</a></p>
-</div>
-</header>
-<section>
-<h2>À propos de moi</h2>
-<p>Je suis passionné par le développement et les technologies numériques. Rigoureux, créatif et toujours motivé, je cherche à contribuer à des projets innovants tout en renforçant mes compétences techniques.</p>
-</section>
-<section>
-<h2>Diplômes &amp; Certifications </h2>
-<ul>
-<li><b>Juillet 2026 :</b> CERTIFICATION AI FOR ALL – Microsoft Learn / MTN Skills Academy</li>
-<li><b>Juillet 2026 :</b> CERTIFICATION INTERNET FUNDAMENTALS – GSMA / MTN Skills Academy</li>
-<li><b>2025 - 2026 :</b> LICENCE 3 INFORMATIQUE GÉNIE LOGICIEL – Atlantique International Business School (AIBS), Cocody Danga</li>
-<li><b>2024 – 2025 :</b> BTS Informatique Développeur d'Applications – Institut International Polytechnique des Elites d'Abidjan (IIPEA), Cocody Riviera-2</li>
-<li><b>2022 – 2023 :</b> Baccalauréat série D – Lycée Garçons de Bingerville</li>
-<li><b>2020 – 2022 :</b> Certificate "English Access Microscholarship" – Ambassade des États-Unis (en CI)</li>
-<li><b>2019 – 2020 :</b> BEPC – Lycée Garçons de Bingerville</li>
-</ul>
-</section>
-<section>
-<h2>Domaines de Compétences</h2>
-<div class="skills">
-<div class="card" id="c1">💻 Développement web : HTML, CSS, JavaScript, PHP</div>
-<div class="card" id="c2">⚙️ Programmation : Python, Java, Algorithmique</div>
-<div class="card" id="c3">🗄️ Bases de données : MySQL</div>
-<div class="card" id="c4">🖥️ Bureautique : Word, Excel, PowerPoint, Internet</div>
-<div class="card" id="c10">📡 Réseau informatique</div>
-<div class="card" id="c9">🧩 Systèmes d'exploitation</div>
-<div class="card" id="c5">🌐 Création de sites web dynamiques et responsives</div>
-</div>
-</section>
-<section>
-<h2>Expériences Professionnelles</h2>
-<ul>
-<li><b>Nov. 2025 – Fév. 2026 :</b> Stage de soutenance – NOVASYS CI<br /><span>Thème : DÉVELOPPEMENT D'UN SYSTÈME D'AUTOMATISATION DE GESTION DES CONGÉS ET ABSENCES</span></li>
-<li><b>Août 2024 – Sept. 2024 :</b> Stage d'immersion professionnelle – NOVASYS CI<br /><span>Projet : VOYAGES HUB – CRÉATION D'UN SITE WEB POUR L'ACHAT EN LIGNE DES TICKETS DE CAR VOYAGEURS</span></li>
-<li><b>Assistant gérant – Cyber café</b><br /><span>Gestion technique des postes et support client</span></li>
-</ul>
-</section>
-<section>
-<h2>Projets</h2>
-<div class="projects">
-<a href="https://conge-online.infinityfreeapp.com" target="_blank" rel="noopener">
-<div class="card" id="c6">
-<h3>🌐 Applications WEB</h3>
-<p>Projet HTML5/CSS3, PHP, MySQL, FPDF. Application web intuitive visant à faciliter les demandes et justifications de congés et absences en entreprise.</p>
-<p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 conge-online.infinityfreeapp.com</p>
-</div>
-</a>
-<a href="https://voyages-hub.ifree.page/" target="_blank" rel="noopener">
-
-<div class="card" id="c11">
-<h3>🧭 Site web (<span>VOYAGES-HUB</span>)</h3>
-<p>Projet HTML5/CSS3 de vente de tickets de car de voyages en ligne. <br /><br /><br /><br /></p>
-    <p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 https://voyages-hub.ifree.page/</p>
-
-</div>
-</a>
-<div class="card" id="c7">
-<h3>📊 Application de gestion</h3>
-<p>Développement d'une mini-application en Python avec gestion de fichiers.</p>
-</div>
-<div class="card" id="c8">
-<h3>📝 Blog dynamique</h3>
-<p>Projet PHP/MySQL permettant la publication d'articles en ligne.</p>
-</div>
-<div class="card" id="c15">
-<h3>🥤 Gestion de distributeur de soda</h3>
-<p>Application console en Java simulant la gestion d'un distributeur automatique de boissons (stock, paiement, rendu de monnaie).</p>
-</div>
-<div class="card" id="c16">
-<h3>🏦 Simulation de système bancaire</h3>
-<p>Application console en Java simulant un système bancaire : gestion de comptes, dépôts, retraits et transactions.</p>
-</div>
-<a href="https://joyeusefetedespere.infinityfree.me/" target="_blank" rel="noopener">
-<div class="card" id="c13">
-<h3>👨‍👧 Joyeuse Fête des Pères</h3>
-<p>Site web HTML5/CSS3 célébrant la fête des pères, avec une mise en page festive et responsive.</p>
-<p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 joyeusefetedespere.infinityfree.me</p>
-</div>
-</a>
-<a href="https://happy-mothers-day.infinityfreeapp.com" target="_blank" rel="noopener">
-<div class="card" id="c14">
-<h3>👩‍👧 Happy Mother's Day</h3>
-<p>Site web HTML5/CSS3 dédié à la fête des mères, conçu avec une interface soignée et responsive.</p>
-<p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 happy-mothers-day.infinityfreeapp.com</p>
-</div>
-</a>
-<a href="https://eagle-leadership-academie.page.gd" target="_blank" rel="noopener">
-<div class="card" id="c12">
-<h3>🏫 Gestion des inscriptions scolaires</h3>
-<p>Application web de gestion des inscriptions pour <span>Eagle Leadership Académie</span>. Interface permettant la saisie, le suivi et la validation des dossiers d'élèves.</p>
-<p style="margin-top: 12px; font-size: 0.82em; color: #2a5298; font-weight: bold;">🔗 eagle-leadership-academie.page.gd</p>
-</div>
-</a>
-</div>
-</section>
-<section>
-<h2>Langues</h2>
-<div class="projects">
-<div class="card" id="l1">
-<h3>🇫🇷 Français</h3>
-<p>⭐⭐⭐⭐⭐</p>
-</div>
-<div class="card" id="l2">
-<h3>🇬🇧 Anglais</h3>
-<p>⭐⭐⭐⭐☆</p>
-</div>
-<div class="card" id="l3">
-<h3>🇩🇪 Allemand</h3>
-<p>⭐⭐⭐☆☆</p>
-</div>
-</div>
-</section>
-<section>
-<h2>Autres Atouts</h2>
-<ul>
-<li>✨ Dynamique</li>
-<li>🎨 Créatif</li>
-<li>⏰ Ponctuel</li>
-<li>📐 Rigoureux</li>
-<li>🤝 Serviable</li>
-<li>🚗 Permis de conduire AB (en cours)</li>
-</ul>
-</section>
-<section>
-<h2>Engagement &amp; Leadership</h2>
-<ul>
-<li>🌟 Membre fondateur de l'ONG LEADER'S HEART</li>
-<li>📢 Responsable communication de l'ONG LEADER'S HEART</li>
-<li>🎤 Président du club de débat contradictoire au Lycée Garçons, Bingerville</li>
-</ul>
-</section>
-<section>
-<h2>Centres d'Intérêt</h2>
-<p>📚 Développement personnel &amp; lecture | ✍️ Écriture | ⚽ Sport | 💚 Bénévolat et actions communautaires</p>
-</section>
-<section>
-<h2>Contact</h2>
-<form id="contactForm" onsubmit="sendEmail(event)"><input type="text" id="name" placeholder="Votre nom" required="" /> <input type="email" id="email" placeholder="Votre email" required="" /> <textarea rows="5" id="message" placeholder="Votre message" required=""></textarea> <button type="submit">Envoyer</button></form></section>
-<footer>
-<p>© 2025 - Portfolio de Zanga Cheick Omar DIOURTE</p>
-</footer></div>
-<!-- Modal messages -->
-<div id="messagesModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); padding: 40px; z-index: 2000; overflow: auto;">
-<div style="background: white; padding: 20px; max-width: 600px; margin: auto; border-radius: 10px; color: #333;">
-<h2>📨 Messages reçus</h2>
-<div id="messagesList"></div>
-<div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;"><button onclick="closeMessages()" style="background: #1e3c72; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Fermer</button> <button id="clearMessagesBtn" onclick="clearAllMessages()" style="display: none; background: #dc3545; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">🗑️ Vider les messages</button></div>
-</div>
-</div>
-<p>
-<script>
-// ─── DARK MODE ───────────────────────────────────────────────
-function toggleDarkMode() {
-  document.body.classList.toggle("dark-mode");
-  const btn = document.querySelector('.toggle-btn');
-  btn.textContent = document.body.classList.contains('dark-mode') ? '☀️ Mode clair' : '🌙 Mode sombre';
-}
-
-// ─── NOTIFICATION ────────────────────────────────────────────
-function showMessage(message, type = 'info') {
-  const d = document.getElementById('statusMessage');
-  d.textContent = message;
-  d.className = `status-message ${type} show`;
-  setTimeout(() => d.classList.remove('show'), 4000);
-}
-
-// ═════════════════════════════════════════════════════════════
-//  GÉNÉRATION PDF — mode texte pur (net comme un Word)
-// ═════════════════════════════════════════════════════════════
-function generatePDF() {
-  showMessage('Génération du PDF...', 'info');
-
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
-
-  const PW = 210, PH = 297;
-  const ML = 15, MR = 15, MT = 0;
-  const CW = PW - ML - MR;
-  let y = MT;
-
-  const NAVY  = [30, 60, 114];
-  const BLUE  = [42, 82, 152];
-  const WHITE = [255, 255, 255];
-  const LGRAY = [240, 244, 250];
-  const DGRAY = [80, 80, 80];
-  const BLACK = [30, 30, 30];
-
-  const setFont = (style = 'normal', size = 10, color = BLACK) => {
-    doc.setFont('helvetica', style);
-    doc.setFontSize(size);
-    doc.setTextColor(...color);
-  };
-
-  const rect = (x, yy, w, h, color, radius = 0) => {
-    doc.setFillColor(...color);
-    if (radius) doc.roundedRect(x, yy, w, h, radius, radius, 'F');
-    else        doc.rect(x, yy, w, h, 'F');
-  };
-
-  const line = (x1, yy, x2, color = NAVY, thickness = 0.3) => {
-    doc.setDrawColor(...color);
-    doc.setLineWidth(thickness);
-    doc.line(x1, yy, x2, yy);
-  };
-
-  const checkPage = (needed = 10) => {
-    if (y + needed > PH - 10) { doc.addPage(); y = 15; }
-  };
-
-  const sectionTitle = (title) => {
-    checkPage(14);
-    rect(0, y, PW, 8, NAVY);
-    setFont('bold', 10, WHITE);
-    doc.text(title.toUpperCase(), ML, y + 5.5);
-    y += 12;
-  };
-
-  const expItem = (period, role, detail) => {
-    checkPage(18);
-    setFont('bold', 9, NAVY);
-    doc.text(period, ML + 4, y);
-    y += 5;
-    setFont('bold', 9.5, BLUE);
-    const rLines = doc.splitTextToSize(role, CW - 4);
-    doc.text(rLines, ML + 4, y);
-    y += rLines.length * 5;
-    setFont('normal', 8.5, DGRAY);
-    const dLines = doc.splitTextToSize(detail, CW - 8);
-    doc.text(dLines, ML + 8, y);
-    y += dLines.length * 4.5 + 4;
-  };
-
-  const skillBadge = (txt, x, yy, w) => {
-    rect(x, yy - 4, w, 6.5, LGRAY, 1.5);
-    setFont('normal', 8, NAVY);
-    doc.text(txt, x + w / 2, yy, { align: 'center' });
-  };
-
-  const langBar = (langue, niveau, maxLvl = 5) => {
-    checkPage(8);
-    setFont('bold', 9, BLACK);
-    doc.text(langue, ML + 4, y);
-    const barX = ML + 50;
-    const barW = 8, barH = 3, gap = 2;
-    for (let i = 0; i < maxLvl; i++) {
-      const filled = i < niveau;
-      doc.setFillColor(...(filled ? NAVY : [200, 210, 225]));
-      doc.roundedRect(barX + i * (barW + gap), y - 3, barW, barH, 0.8, 0.8, 'F');
-    }
-    setFont('normal', 8, DGRAY);
-    const labels = ['Notions','Elémentaire','Intermédiaire','Avancé','Courant/Bilingue'];
-    doc.text(labels[niveau - 1] || '', barX + maxLvl * (barW + gap) + 2, y);
-    y += 7;
-  };
-
-  // EN-TÊTE
-  rect(0, 0, PW, 42, NAVY);
-  setFont('bold', 20, WHITE);
-  doc.text('Zanga Cheick Omar DIOURTE', ML, 13);
-  line(ML, 16, PW - MR, [255,255,255,0.4], 0.3);
-  setFont('bold', 10, [180, 210, 240]);
-  doc.text('TECHNICIEN SUPERIEUR INFORMATIQUE  —  DEVELOPPEUR D\'APPLICATION', ML, 22);
-  setFont('normal', 8.5, [220, 235, 255]);
-  doc.text('Bingerville, Abidjan – Cote d\'Ivoire', ML, 29);
-  doc.text('+225 05 84 87 64 67', ML, 34);
-  doc.text('diourtecheick@gmail.com', ML + 55, 34);
-  doc.text('linkedin.com/in/zanga-cheick-omar-diourte-81a458221', ML, 39);
-  setFont('normal', 8, [180, 210, 240]);
-  doc.text('Ivoirien  |  19 ans', PW - MR - 30, 34, { align: 'right' });
-  y = 50;
-
-  // À PROPOS
-  sectionTitle('A propos de moi');
-  setFont('normal', 9, BLACK);
-  const aboutLines = doc.splitTextToSize(
-    'Passionne par le developpement et les technologies numeriques. Rigoureux, creatif et toujours motive, je cherche a contribuer a des projets innovants tout en renforcant mes competences techniques.',
-    CW
-  );
-  doc.text(aboutLines, ML, y);
-  y += aboutLines.length * 5 + 4;
-
-  // FORMATION
-  sectionTitle('Formation & Diplomes');
-  const formations = [
-    ['2025',          'Licence 3 Informatique Genie Logiciel', 'AIBS – Atlantique International Business School, Cocody Danga'],
-    ['2024 – 2025',   'BTS Informatique – Developpeur d\'Applications', 'IIPEA – Institut International Polytechnique des Elites d\'Abidjan, Riviera-2'],
-    ['2022 – 2023',   'Baccalaureat serie D', 'Lycee Garcons de Bingerville'],
-    ['2020 – 2022',   'Certificate "English Access Microscholarship"', 'Ambassade des Etats-Unis en Cote d\'Ivoire'],
-    ['2019 – 2020',   'BEPC', 'Lycee Garcons de Bingerville'],
-  ];
-  for (const [year, diploma, school] of formations) {
-    checkPage(14);
-    rect(ML, y - 4, 28, 6, LGRAY, 1);
-    setFont('bold', 8, NAVY);
-    doc.text(year, ML + 14, y, { align: 'center' });
-    setFont('bold', 9, BLACK);
-    const dLines = doc.splitTextToSize(diploma, CW - 34);
-    doc.text(dLines, ML + 32, y);
-    setFont('normal', 8, DGRAY);
-    const sLines = doc.splitTextToSize(school, CW - 34);
-    doc.text(sLines, ML + 32, y + dLines.length * 5);
-    y += dLines.length * 5 + sLines.length * 4.5 + 4;
-  }
-
-  // COMPÉTENCES
-  sectionTitle('Competences Techniques');
-  const skills = [
-    'HTML · CSS · JavaScript · PHP',
-    'Python · Java · Algorithmique',
-    'MySQL',
-    'Word · Excel · PowerPoint',
-    'Reseaux informatiques',
-    'Systemes d\'exploitation',
-    'Sites web dynamiques & responsives',
-  ];
-  const bW = (CW - 10) / 3 - 2;
-  let bX = ML;
-  for (let i = 0; i < skills.length; i++) {
-    checkPage(10);
-    skillBadge(skills[i], bX, y, bW);
-    bX += bW + 4;
-    if ((i + 1) % 3 === 0 || i === skills.length - 1) { bX = ML; y += 9; }
-  }
-  y += 4;
-
-  // EXPÉRIENCES
-  sectionTitle('Experiences Professionnelles');
-  expItem('Nov. 2025 – Fev. 2026', 'Stage de soutenance – NOVASYS CI',
-    'Developpement d\'un systeme d\'automatisation de gestion des conges et absences.');
-  expItem('Aout 2024 – Sept. 2024', 'Stage d\'immersion professionnelle – NOVASYS CI',
-    'VOYAGES HUB : creation d\'un site web pour l\'achat en ligne de tickets de car voyageurs.');
-  expItem('Poste anterieur', 'Assistant gerant – Cyber cafe',
-    'Gestion technique des postes informatiques et support client.');
-
-  // PROJETS
-  sectionTitle('Projets');
-  const projects = [
-    ['Application WEB – Gestion des conges/absences',
-     'HTML5, CSS3, PHP, MySQL, FPDF. Application intuitive de gestion des demandes de conges et absences en entreprise.'],
-    ['VOYAGES-HUB – Site de vente de tickets',
-     'HTML5, CSS3. Site web de vente en ligne de tickets de car de voyages.'],
-    ['Application de gestion (Python)',
-     'Mini-application Python avec gestion de fichiers et de donnees.'],
-    ['Blog dynamique',
-     'Projet PHP/MySQL de publication et gestion d\'articles en ligne.'],
-    ['Gestion des inscriptions scolaires – Eagle Leadership Academie',
-     'Application web de gestion des inscriptions scolaires. Interface de saisie, suivi et validation des dossiers d\'eleves. (eagle-leadership-academie.page.gd)'],
-  ];
-  for (const [title, desc] of projects) {
-    checkPage(14);
-    setFont('bold', 9, NAVY);
-    doc.text('• ' + title, ML, y);
-    y += 5;
-    setFont('normal', 8.5, DGRAY);
-    const dl = doc.splitTextToSize(desc, CW - 8);
-    doc.text(dl, ML + 6, y);
-    y += dl.length * 4.5 + 3;
-  }
-
-  // LANGUES
-  checkPage(35);
-  sectionTitle('Langues');
-  langBar('Francais',  5);
-  langBar('Anglais',   4);
-  langBar('Allemand',  3);
-  y += 2;
-
-  // ENGAGEMENT
-  sectionTitle('Engagement & Leadership');
-  const engagements = [
-    'Membre fondateur – ONG LEADER\'S HEART',
-    'Responsable communication – ONG LEADER\'S HEART',
-    'President du club de debat contradictoire – Lycee Garcons, Bingerville',
-  ];
-  for (const e of engagements) {
-    checkPage(7);
-    setFont('normal', 9, BLACK);
-    doc.text('• ' + e, ML, y);
-    y += 5.5;
-  }
-  y += 2;
-
-  // ATOUTS
-  sectionTitle('Atouts & Qualites');
-  const atouts = ['Dynamique', 'Creatif', 'Ponctuel', 'Rigoureux', 'Serviable', 'Permis AB (en cours)'];
-  const aW = (CW - 10) / 3 - 2;
-  let aX = ML;
-  for (let i = 0; i < atouts.length; i++) {
-    checkPage(10);
-    skillBadge(atouts[i], aX, y, aW);
-    aX += aW + 4;
-    if ((i + 1) % 3 === 0 || i === atouts.length - 1) { aX = ML; y += 9; }
-  }
-  y += 2;
-
-  // CENTRES D'INTÉRÊT
-  sectionTitle('Centres d\'interet');
-  const interests = ['Developpement personnel & lecture', 'Ecriture creative', 'Sport', 'Benevolat & actions communautaires'];
-  setFont('normal', 9, BLACK);
-  doc.text(interests.join('   |   '), ML, y);
-  y += 6;
-
-  // PIED DE PAGE
-  const pageCount = doc.internal.getNumberOfPages();
-  for (let p = 1; p <= pageCount; p++) {
-    doc.setPage(p);
-    rect(0, PH - 8, PW, 8, NAVY);
-    setFont('normal', 7.5, WHITE);
-    doc.text('© 2025 — Zanga Cheick Omar DIOURTE  |  diourtecheick@gmail.com  |  +225 05 84 87 64 67', PW / 2, PH - 3, { align: 'center' });
-    if (pageCount > 1) {
-      setFont('normal', 7.5, WHITE);
-      doc.text(`Page ${p} / ${pageCount}`, PW - MR, PH - 3, { align: 'right' });
-    }
-  }
-
-  doc.save('CV_Zanga_Cheick_Omar_DIOURTE.pdf');
-  showMessage('CV telecharge avec succes !', 'success');
-}
-
-// ─── CONTACT — EmailJS + localStorage ────────────────────────
-async function sendEmail(event) {
-  event.preventDefault();
-  const name    = document.getElementById('name').value.trim();
-  const email   = document.getElementById('email').value.trim();
-  const message = document.getElementById('message').value.trim();
-  const btn     = document.querySelector('#contactForm button[type="submit"]');
-  btn.disabled    = true;
-  btn.textContent = '⏳ Envoi en cours...';
-  showMessage('Envoi en cours...', 'info');
-  try {
-    await emailjs.send('service_r8q8jll', 'template_zwn7h0d', {
-      from_name  : name,
-      from_email : email,
-      message    : message,
-      reply_to   : email,
-    });
-    const stored = JSON.parse(localStorage.getItem('portfolio_messages') || '[]');
-    stored.push({ name, email, message, date: new Date().toLocaleString('fr-FR') });
-    localStorage.setItem('portfolio_messages', JSON.stringify(stored));
-    showMessage('✅ Message envoyé avec succès !', 'success');
-    document.getElementById('contactForm').reset();
-  } catch (err) {
-    console.error('EmailJS error:', err);
-    showMessage('❌ Echec de l\'envoi. Vérifiez votre connexion.', 'error');
-  } finally {
-    btn.disabled    = false;
-    btn.textContent = 'Envoyer';
-  }
-}
-
-function showStoredMessages() {
-  const messages  = JSON.parse(localStorage.getItem('portfolio_messages') || '[]');
-  const container = document.getElementById('messagesList');
-  if (messages.length === 0) {
-    container.innerHTML = '<p style="color:#666;">Aucun message reçu pour le moment.</p>';
+function openAdmin(){
+  if (isAdminLoggedIn){
+    adminDraft = deepClone(getData());
+    buildAdminNav();
+    switchAdminTab(ADMIN_TABS[0].key);
+    document.getElementById('adminPanel').classList.add('open');
+    document.body.style.overflow = 'hidden';
   } else {
-    container.innerHTML = messages.slice().reverse().map((msg, i) => `
-      <div style="border:1px solid #ddd; padding:12px; margin-bottom:12px; border-radius:8px; background:#f9f9f9; position:relative;">
-        <span style="position:absolute;top:8px;right:10px;font-size:0.75em;color:#999;">${msg.date}</span>
-        <p style="margin:0 0 4px;"><b style="color:#1e3c72;">Nom :</b> ${msg.name}</p>
-        <p style="margin:0 0 4px;"><b style="color:#1e3c72;">Email :</b>
-          <a href="mailto:${msg.email}" style="color:#2a5298;">${msg.email}</a></p>
-        <p style="margin:0;"><b style="color:#1e3c72;">Message :</b><br>
-          <span style="color:#333;">${msg.message}</span></p>
+    openAdminLogin();
+  }
+}
+function closeAdmin(){
+  document.getElementById('adminPanel').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ADMIN — CONFIGURATION DES ONGLETS
+   ══════════════════════════════════════════════════════════════ */
+const ADMIN_TABS = [
+  { key:'profile',    label:'Profil',              icon:'fa-id-card',         type:'profile' },
+  { key:'about',      label:'À propos',            icon:'fa-circle-info',     type:'longtext' },
+  { key:'education',  label:'Formation',           icon:'fa-graduation-cap',  type:'list',
+    fields:[ {name:'period',label:'Période',type:'text'}, {name:'title',label:'Diplôme',type:'text'}, {name:'school',label:'Établissement',type:'text'} ],
+    empty:{period:'', title:'', school:''} },
+  { key:'skills',     label:'Compétences',         icon:'fa-screwdriver-wrench', type:'list',
+    fields:[ {name:'icon',label:'Icône (Font Awesome)',type:'icon'}, {name:'text',label:'Texte',type:'text'} ],
+    empty:{icon:'fa-star', text:''} },
+  { key:'experience', label:'Expériences',         icon:'fa-briefcase',       type:'list',
+    fields:[ {name:'period',label:'Période',type:'text'}, {name:'role',label:'Poste',type:'text'}, {name:'detail',label:'Détail',type:'textarea'} ],
+    empty:{period:'', role:'', detail:''} },
+  { key:'projects',   label:'Projets',             icon:'fa-diagram-project', type:'list',
+    fields:[ {name:'icon',label:'Icône (Font Awesome)',type:'icon'}, {name:'title',label:'Titre',type:'text'}, {name:'desc',label:'Description',type:'textarea'}, {name:'link',label:'Lien (optionnel)',type:'text'}, {name:'linkLabel',label:'Texte du lien affiché',type:'text'} ],
+    empty:{icon:'fa-diagram-project', title:'', desc:'', link:'', linkLabel:''} },
+  { key:'languages',  label:'Langues',             icon:'fa-language',        type:'list',
+    fields:[ {name:'flagName',label:'Langue (avec drapeau 🇫🇷)',type:'text'}, {name:'level',label:'Niveau (1 à 5)',type:'number'} ],
+    empty:{flagName:'', level:3} },
+  { key:'atouts',     label:'Atouts',              icon:'fa-star',            type:'list',
+    fields:[ {name:'icon',label:'Icône (Font Awesome)',type:'icon'}, {name:'text',label:'Texte',type:'text'} ],
+    empty:{icon:'fa-star', text:''} },
+  { key:'engagement', label:'Engagement',          icon:'fa-people-group',    type:'list',
+    fields:[ {name:'icon',label:'Icône (Font Awesome)',type:'icon'}, {name:'text',label:'Texte',type:'text'} ],
+    empty:{icon:'fa-star', text:''} },
+  { key:'interests',  label:"Centres d'intérêt",   icon:'fa-heart',           type:'list',
+    fields:[ {name:'icon',label:'Icône (Font Awesome)',type:'icon'}, {name:'text',label:'Texte',type:'text'} ],
+    empty:{icon:'fa-heart', text:''} },
+  { key:'footer',     label:'Pied de page',        icon:'fa-shoe-prints',     type:'shorttext' },
+  { key:'textColors', label:'Couleurs des textes', icon:'fa-palette',         type:'colors',
+    fields:[
+      { name:'name',     label:'Nom (titre principal)' },
+      { name:'subtitle', label:'Sous-titre / Poste' },
+      { name:'headings', label:'Titres de section' },
+      { name:'body',     label:'Texte des paragraphes et listes' },
+      { name:'footer',   label:'Pied de page' }
+    ] }
+];
+
+let adminDraft = null;
+let currentAdminTab = 'profile';
+
+function buildAdminNav(){
+  const nav = document.getElementById('adminNav');
+  nav.innerHTML = ADMIN_TABS.map(t =>
+    `<button class="admin-nav-btn" data-key="${t.key}" onclick="switchAdminTab('${t.key}')"><i class="fa-solid ${t.icon}"></i> <span>${esc(t.label)}</span></button>`
+  ).join('');
+}
+
+function switchAdminTab(key){
+  currentAdminTab = key;
+  document.querySelectorAll('.admin-nav-btn').forEach(b => b.classList.toggle('active', b.dataset.key === key));
+  const tab = ADMIN_TABS.find(t => t.key === key);
+  document.getElementById('adminTabTitle').innerHTML = `<i class="fa-solid ${tab.icon}"></i> ${esc(tab.label)}`;
+  renderAdminTabBody(tab);
+}
+
+function renderAdminTabBody(tab){
+  const body = document.getElementById('adminBody');
+  if (tab.type === 'profile'){
+    const p = adminDraft.profile;
+    body.innerHTML = `
+      <div class="admin-field">
+        <label>Photo de profil</label>
+        <div class="admin-photo-row">
+          <img class="admin-photo-preview" id="adminPhotoPreview" src="${esc(p.photo || '3.png')}" alt="">
+          <input type="text" style="flex:1;min-width:180px;" value="${esc(p.photo)}" oninput="adminDraft.profile.photo=this.value; document.getElementById('adminPhotoPreview').src=this.value;" placeholder="URL ou nom de fichier de la photo">
+          <label class="admin-upload-btn"><i class="fa-solid fa-upload"></i> Importer<input type="file" accept="image/*" style="display:none" onchange="adminUploadPhoto(this)"></label>
+        </div>
       </div>
-    `).join('');
+      <div class="admin-grid-2">
+        ${adminSimpleField('profile','name','Nom complet', p.name)}
+        ${adminSimpleField('profile','subtitle','Sous-titre / Poste', p.subtitle)}
+        ${adminSimpleField('profile','nationalityBadge','Badge nationalité (avec drapeau)', p.nationalityBadge)}
+        ${adminSimpleField('profile','ageBadge','Badge âge', p.ageBadge)}
+        ${adminSimpleField('profile','location','Localisation', p.location)}
+        ${adminSimpleField('profile','phone','Téléphone', p.phone)}
+        ${adminSimpleField('profile','email','Email', p.email)}
+        ${adminSimpleField('profile','linkedin','Lien LinkedIn', p.linkedin)}
+      </div>`;
+    return;
   }
-  const clearBtn = document.getElementById('clearMessagesBtn');
-  if (clearBtn) clearBtn.style.display = messages.length ? 'inline-block' : 'none';
-  document.getElementById('messagesModal').style.display = 'block';
+  if (tab.type === 'longtext' || tab.type === 'shorttext'){
+    const value = adminDraft[tab.key] || '';
+    const isLong = tab.type === 'longtext';
+    body.innerHTML = `
+      <div class="admin-field">
+        <label>${esc(tab.label)}</label>
+        ${isLong
+          ? `<textarea style="min-height:160px" oninput="adminDraft['${tab.key}']=this.value">${esc(value)}</textarea>`
+          : `<input type="text" value="${esc(value)}" oninput="adminDraft['${tab.key}']=this.value">`}
+      </div>`;
+    return;
+  }
+  if (tab.type === 'colors'){
+    if (!adminDraft.textColors) adminDraft.textColors = {};
+    body.innerHTML = tab.fields.map(f => adminColorField(f.name, f.label, adminDraft.textColors[f.name])).join('');
+    return;
+  }
+  if (tab.type === 'list'){
+    const items = adminDraft[tab.key] || [];
+    if (items.length === 0){
+      body.innerHTML = `<div class="admin-empty"><i class="fa-solid fa-inbox" style="font-size:1.6em;display:block;margin-bottom:8px;"></i>Aucun élément pour l'instant.</div>` + adminAddButton(tab.key);
+      return;
+    }
+    body.innerHTML = items.map((item, idx) => `
+      <div class="admin-item-card">
+        <div class="admin-item-head">
+          <span class="admin-item-tag">#${idx+1}</span>
+          <button class="admin-delete-btn" title="Supprimer" onclick="adminRemoveItem('${tab.key}', ${idx})"><i class="fa-solid fa-trash"></i></button>
+        </div>
+        ${tab.fields.map(f => adminItemField(tab.key, idx, f, item[f.name])).join('')}
+      </div>
+    `).join('') + adminAddButton(tab.key);
+    return;
+  }
 }
 
-function clearAllMessages() {
-  if (confirm('Supprimer tous les messages stockés ?')) {
-    localStorage.removeItem('portfolio_messages');
-    showStoredMessages();
-  }
+function adminSimpleField(objKey, name, label, value){
+  return `<div class="admin-field">
+      <label>${esc(label)}</label>
+      <input type="text" value="${esc(value)}" oninput="adminDraft['${objKey}']['${name}']=this.value">
+    </div>`;
 }
 
-function closeMessages() {
-  document.getElementById('messagesModal').style.display = 'none';
+function adminColorField(fieldKey, label, currentValue){
+  const swatches = TEXT_COLOR_PALETTE.map(c => `
+    <button type="button" class="color-swatch ${currentValue === c.value ? 'active' : ''}"
+      title="${esc(c.name)}" onclick="adminSetTextColor('${fieldKey}', '${c.value}')">
+      <span class="swatch-dot" style="background:${c.value};"></span>
+      <span class="swatch-label">${esc(c.name)}</span>
+    </button>`).join('');
+  const noneSwatch = `
+    <button type="button" class="color-swatch none ${!currentValue ? 'active' : ''}"
+      title="Couleur par défaut du site" onclick="adminSetTextColor('${fieldKey}', '')">
+      <span class="swatch-dot"></span>
+      <span class="swatch-label">Par défaut</span>
+    </button>`;
+  return `<div class="admin-field">
+      <label>${esc(label)}</label>
+      <div class="color-swatches">${noneSwatch}${swatches}</div>
+    </div>`;
 }
+
+function adminSetTextColor(fieldKey, value){
+  if (!adminDraft.textColors) adminDraft.textColors = {};
+  adminDraft.textColors[fieldKey] = value;
+  renderAdminTabBody(ADMIN_TABS.find(t => t.key === 'textColors'));
+  renderPublicSite(adminDraft); // aperçu immédiat sur le site
+}
+
+function adminItemField(listKey, idx, field, value){
+  if (field.type === 'textarea'){
+    return `<div class="admin-field">
+        <label>${esc(field.label)}</label>
+        <textarea oninput="adminDraft['${listKey}'][${idx}]['${field.name}']=this.value">${esc(value)}</textarea>
+      </div>`;
+  }
+  if (field.type === 'number'){
+    return `<div class="admin-field">
+        <label>${esc(field.label)}</label>
+        <input type="number" min="1" max="5" value="${esc(value)}" oninput="adminDraft['${listKey}'][${idx}]['${field.name}']=parseInt(this.value)||1">
+      </div>`;
+  }
+  if (field.type === 'icon'){
+    const iconId = `icon-prev-${listKey}-${idx}`;
+    return `<div class="admin-field">
+        <label>${esc(field.label)}</label>
+        <div class="icon-input-row">
+          <div class="icon-preview" id="${iconId}"><i class="fa-solid ${esc(value || 'fa-star')}"></i></div>
+          <input type="text" style="flex:1;" value="${esc(value)}" placeholder="ex : fa-laptop-code"
+            oninput="adminDraft['${listKey}'][${idx}]['${field.name}']=this.value; document.getElementById('${iconId}').innerHTML='<i class=\\'fa-solid '+this.value+'\\'></i>';">
+        </div>
+        <div class="admin-hint">Nom d'icône <a href="https://fontawesome.com/search?o=r&m=free&s=solid" target="_blank" rel="noopener" style="color:#2a5298;">Font Awesome</a> (ex : fa-star, fa-code, fa-heart)</div>
+      </div>`;
+  }
+  return `<div class="admin-field">
+      <label>${esc(field.label)}</label>
+      <input type="text" value="${esc(value)}" oninput="adminDraft['${listKey}'][${idx}]['${field.name}']=this.value">
+    </div>`;
+}
+
+function adminAddButton(listKey){
+  return `<button class="admin-add-btn" onclick="adminAddItem('${listKey}')"><i class="fa-solid fa-plus"></i> Ajouter un élément</button>`;
+}
+
+function adminAddItem(listKey){
+  const tab = ADMIN_TABS.find(t => t.key === listKey);
+  adminDraft[listKey] = adminDraft[listKey] || [];
+  adminDraft[listKey].push(deepClone(tab.empty));
+  renderAdminTabBody(tab);
+}
+function adminRemoveItem(listKey, idx){
+  adminDraft[listKey].splice(idx, 1);
+  renderAdminTabBody(ADMIN_TABS.find(t => t.key === listKey));
+}
+function adminUploadPhoto(input){
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    adminDraft.profile.photo = e.target.result;
+    document.getElementById('adminPhotoPreview').src = e.target.result;
+    renderAdminTabBody(ADMIN_TABS.find(t => t.key === 'profile'));
+  };
+  reader.readAsDataURL(file);
+}
+
+async function adminSave(){
+  const btn = document.querySelector('.btn-save');
+  if (btn){ btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enregistrement...'; }
+  const result = await saveData(adminDraft);
+  renderPublicSite(adminDraft);
+  if (result.serverSaved){
+    showMessage('Modifications enregistrées sur le serveur (data.json mis à jour) !', 'success');
+  } else {
+    showMessage("Enregistrement local uniquement (api.php inaccessible). Cliquez sur \"Exporter\" pour sauvegarder manuellement.", 'error');
+  }
+  if (btn){ btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Enregistrer'; }
+}
+function adminResetTab(){
+  if (!confirm('Réinitialiser cette section aux valeurs par défaut ?')) return;
+  adminDraft[currentAdminTab] = deepClone(DEFAULT_DATA[currentAdminTab]);
+  renderAdminTabBody(ADMIN_TABS.find(t => t.key === currentAdminTab));
+  showMessage('Section réinitialisée (pensez à Enregistrer).', 'info');
+}
+
+/* ══════════════════════════════════════════════════════════════
+   INITIALISATION
+   ══════════════════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadDefaultData();
+  renderPublicSite(getData());
+  // Le mode sombre et la connexion admin ne sont plus mémorisés
+  // (aucun stockage local) : chaque visite démarre en mode clair et déconnecté.
+});
 </script>
-</p>
 </body>
 </html>
