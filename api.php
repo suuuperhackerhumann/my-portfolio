@@ -1,24 +1,11 @@
 <?php
-/**
- * api.php — point d'entrée unique pour lire/écrire les données du portfolio
- * directement sur le serveur (data.json et messages.json).
- *
- * Toutes les requêtes se font en POST avec un corps JSON contenant au moins
- * un champ "action". Exemple depuis le JS :
- *
- *   fetch('api.php', {
- *     method: 'POST',
- *     headers: { 'Content-Type': 'application/json' },
- *     body: JSON.stringify({ action: 'save_data', password: '...', data: {...} })
- *   });
- */
+
 
 header('Content-Type: application/json; charset=utf-8');
 
 $DATA_FILE     = __DIR__ . '/data.json';
 $MESSAGES_FILE = __DIR__ . '/messages.json';
 
-// Doit rester identique au mot de passe défini côté JS (ADMIN_PASSWORD).
 $ADMIN_PASSWORD = 'cheickestlegoat';
 
 function readJsonFile($path, $default) {
@@ -47,12 +34,10 @@ $action = $input['action'] ?? '';
 
 switch ($action) {
 
-    // Lecture publique des données du portfolio.
     case 'get_data':
         respond(true, ['data' => readJsonFile($DATA_FILE, null)]);
         break;
 
-    // Écriture des données du portfolio (protégée par mot de passe).
     case 'save_data':
         if (($input['password'] ?? '') !== $ADMIN_PASSWORD) {
             respond(false, ['message' => 'Mot de passe incorrect.'], 403);
@@ -67,7 +52,6 @@ switch ($action) {
         }
         break;
 
-    // Envoi d'un message de contact (public, appelé depuis le formulaire).
     case 'add_message':
         $name    = trim((string)($input['name'] ?? ''));
         $email   = trim((string)($input['email'] ?? ''));
@@ -89,7 +73,6 @@ switch ($action) {
         }
         break;
 
-    // Liste des messages reçus (protégée par mot de passe — espace admin).
     case 'get_messages':
         if (($input['password'] ?? '') !== $ADMIN_PASSWORD) {
             respond(false, ['message' => 'Mot de passe incorrect.'], 403);
@@ -97,7 +80,6 @@ switch ($action) {
         respond(true, ['messages' => readJsonFile($MESSAGES_FILE, [])]);
         break;
 
-    // Suppression de tous les messages (protégée par mot de passe).
     case 'clear_messages':
         if (($input['password'] ?? '') !== $ADMIN_PASSWORD) {
             respond(false, ['message' => 'Mot de passe incorrect.'], 403);
